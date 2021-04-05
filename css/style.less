@@ -231,7 +231,7 @@ header {
 
 .home-products {
     padding-top: 24px;
-    padding-bottom: 68px;
+    padding-bottom: 60px;
 
     h3.all_products {
         margin-bottom: 35px;
@@ -340,8 +340,10 @@ header {
     .pagination-block {
         display: flex;
         justify-content: center;
+        margin-top: -7px;
 
         ul {
+            margin-bottom: 0;
             li {
                 a {
                     font-style: normal;
@@ -371,9 +373,153 @@ header {
     }
 }
 
-.home-video {
-    .video1440 {
-        width: 1440px;
-        margin: 0 auto;
+.delivery {
+    padding: 60px 0;
+
+    .block {
+        width: 100%;
+        height: 254px;
+        background: #F2F2F2;
+        box-shadow: 0px 0px 18.0727px rgba(0, 0, 0, 0.03);
+        border-radius: 18.0727px;
+        padding: 30px 0 30px 40px;
+        background-image: url(../img/bus.png);
+        background-position: center right;
+        background-repeat: no-repeat;
+
+        .title {
+            font-size: 31.6273px;
+            line-height: 38px;
+            color: #333333;
+        }
+
+        a {
+            font-weight: 500;
+            font-size: 25.3018px;
+            color: #FFFFFF;
+            width: 170px;
+            height: 53px;
+            background: #00AC4E;
+            border-radius: 5px;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            line-height: 53px;
+            margin-top: 34px;
+        }
+    }
+}
+
+footer {
+    background: #00AC4E;
+    padding: 34px 0;
+    color: #FFFFFF;
+
+    a {
+        color: #FFFFFF;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: none;
+            color: #FFFFFF;
+        }
+    }
+
+    .footer_bottom {
+        margin-top: 9px;
+        font-size: 12.3407px;
+        line-height: 32px;
+        font-family: 'TT Hoves';
+
+        a {
+            font-size: 12.3407px;
+            line-height: 32px;
+            margin-left: 33px;
+        }
+    }
+
+    .footer-wrapper {
+        display: flex;
+        justify-content: space-between;
+
+        .footer-left {
+            .phones {
+                display: flex;
+                justify-content: space-between;
+
+                .phone-item {
+                    display: flex;
+                    flex-direction: column;
+                    margin-right: 60px;
+                    
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    
+                    span {
+                        font-size: 12.3407px;
+                        line-height: 32px;
+                    }
+
+                    a {
+                        font-weight: 500;
+                        font-size: 18.511px;
+                        line-height: 39px;
+                    }
+                }
+            }
+
+            .work-time {
+                font-size: 15.4259px;
+                line-height: 32px;
+                margin: 10px 0;
+            }
+
+            .work-email {
+                display: flex;
+                flex-direction: column;
+                font-size: 18.511px;
+                line-height: 32px;
+
+                a.site-help {
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-decoration-line: underline;
+                    margin-top: 15px;
+                }
+            }
+        }
+
+        .footer-center {
+            .social {
+                display: flex;
+                flex-direction: column;
+
+                a {
+                    font-weight: 500;
+                    font-size: 15.4259px;
+                    line-height: 32px;
+                    letter-spacing: 3.08517px;
+                    text-transform: uppercase;
+                    margin-bottom: 26px;
+                }
+            }
+        }
+
+        .footer-right {
+            .person {
+                a {
+                    display: flex;
+                    align-items: center;
+                    font-weight: 500;
+                    font-size: 15.4259px;
+                    line-height: 32px;
+                    img {
+                        margin-right: 7px;
+                    }
+                }
+            }
+        }
     }
 }
