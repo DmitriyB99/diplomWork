@@ -13,6 +13,14 @@
     <title>Bis Asia</title>
   </head>
   <body>
+    <button data-bs-toggle="modal" data-bs-target="#login">логин</button>
+
+    <button data-bs-toggle="modal" data-bs-target="#register">регистрация</button>
+    <button data-bs-toggle="modal" data-bs-target="#subscribe">Подписка</button>
+    <button data-bs-toggle="modal" data-bs-target="#check-phone">Подтвердите номер</button>
+    <button data-bs-toggle="modal" data-bs-target="#reviews">Добавить отзыв</button>
+    <button data-bs-toggle="modal" data-bs-target="#pass">Восстановление пароля</button>
+
     <div class="wrapper">
         <header>
                 <nav class="navbar navbar-expand-lg navbar-light">                    
@@ -57,7 +65,7 @@
                                     </a>
                                 </div>
                                 <div class="menu-user">
-                                    <button class="profile">
+                                    <button class="profile" data-bs-toggle="modal" data-bs-target="#login">
                                         <img src="img/person.svg" alt="">
                                     </button>
                                     <a href="" class="cart">
@@ -630,10 +638,242 @@
 
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
     -->
+
+    <script>$('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+    </script>
   </body>
 </html>
+
+
+<!--Modal___login___-->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+                <div class="top-modal">
+                    <img src="img/person.svg" alt="">
+                    <div class="modal-name">Войти в личный кабинет</div>
+                </div>
+                <div class="form">
+                    <form action="" method="post">
+                        <div class="inpb">
+                            <input type="text" name="" placeholder="Телефон" class="phone">
+                        </div>
+                        <div class="inpb">
+                            <input type="text" name="" placeholder="Пароль" class="pass">
+                        </div>
+                        <div class="forgot-password">Забыли пароль?</div>
+                        <button>Войти</button>
+                        <div class="modal-txt">Впервые у нас? <span>Зарегистрироваться</span></div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--Modal___check-phone___-->
+<div class="modal fade" id="check-phone" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+                <div class="top-modal">
+                    <img src="img/person.svg" alt="">
+                    <div class="modal-name">Подтвердите номер телефона</div>
+                </div>
+                <div class="form">
+                    <form action="" method="post">
+                        <div class="inpb digit">
+                            <input type="text" name="" maxlength="1">
+                            <span></span>
+                            <input type="text" name="" maxlength="1">
+                            <span></span>
+                            <input type="text" name="" maxlength="1">
+                            <span></span>
+                            <input type="text" name="" maxlength="1">
+                        </div>
+                        <div class="send-check">
+                            <!-- смена состоиния при добавлении класса active к send-check-->
+                            <span>Отправить повторно</span><b>1:59</b>
+                            <button>Далее</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--Modal___register___-->
+<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+                <div class="top-modal">
+                    <img src="img/person.svg" alt="">
+                    <div class="modal-name">Регистрация</div>
+                </div>
+                <div class="form">
+                    <form action="" method="post">
+                        <div class="inpb">
+                            <input type="text" name="" placeholder="Телефон" class="phone">
+                        </div>
+                        <div class="inpb">
+                            <input type="text" name="" placeholder="Пароль" class="pass">
+                        </div>
+                        <div class="inpb">
+                            <input type="text" name="" placeholder="Подтвердите пароль" class="pass">
+                        </div>
+
+                        <div class="check-block">
+                            <div class="line">
+                                <input type="checkbox" id="r-mail">
+                                <label for="r-mail">Хочу получать выгодные предложения от магазина</label>
+                            </div>
+
+                            <div class="line">
+                                <input type="checkbox" checked id="r-pol">
+                                <label for="r-pol">Принимаю условия <a href="">Пользовательского соглашения</a>, <a href="">Политики конфиденциальности</a></label>
+                            </div>
+                        </div>
+                        <div class="error-txt">Пользователь с таким номером телефона уже зарегистрирован</div>
+                        <button>Зарегистрироваться</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal____subscribe___-->
+<div class="modal fade" id="subscribe" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+                <div class="top-modal">
+                    <img src="img/email-modal.svg" alt="">
+                    <div class="modal-name">Подпишитесь на нашу рассылку и получите промокод на 500 RUB!</div>
+                </div>
+                <div class="form">
+                    <form action="" method="post">
+                        <div class="inpb">
+                            <input type="text" name="" placeholder="E-mail" class="E-mail">
+                        </div>
+
+                        <button>Отправить</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--Modal____reviews___-->
+<div class="modal fade" id="reviews" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog reviews" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+                <div class="rev-top">Добавить отзыв</div>
+                <div class="form">
+                    <form action="" method="post">
+                        <div class="line-rev">
+                            <b>Ваша оценка:</b>
+                            <div class="rating">
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                                <span class="active"></span>
+                            </div>
+                        </div>
+                        <div class="inpb line-rev">
+                            <b>Ваше имя:</b>
+                            <input type="text" name="" placeholder="Введите Ваше имя">
+                        </div>
+                        <div class="inpb line-rev">
+                            <b>Ваш отзыв:</b>
+                            <textarea name=""></textarea>
+                        </div>
+                        <button>Добавить отзыв</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--Modal___login-pass___-->
+<div class="modal fade" id="pass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+                <div class="top-modal">
+                    <img src="img/person.svg" alt="">
+                    <div class="modal-name">Войти в личный кабинет</div>
+                </div>
+                <div class="form">
+                    <form action="" method="post">
+                        <div class="inpb">
+                            <input type="text" name="" placeholder="Введите телефон" class="phone">
+                        </div>
+                        <div class="inpb">
+                            <input type="text" name="" placeholder="Новый пароль (мин. 6 символов)" class="pass">
+                        </div>
+                        <div class="inpb">
+                            <input type="text" name="" placeholder="Подтвердите пароль" class="pass">
+                        </div>
+                        <div class="btn-block-2">
+                            <button class="decline" data-dismiss="modal" aria-label="Close">Отменить</button><button>Обновить пароль</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
