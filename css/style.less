@@ -2461,15 +2461,19 @@ footer {
 
 
     header {
-        position: relative;
+        position: fixed;
 
         nav.navbar {
-            height: auto;
+            height: 50px;
+            position: static;
 
             .navbar-toggler {
                 order: 1;
                 padding: 0;
                 border: 0;
+                position: relative;
+                z-index: 3;
+
 
                 span {
                     background-image: url(../img/mob-menu.png);
@@ -2484,6 +2488,9 @@ footer {
             .navbar-brand {
                 order: 2;
                 margin-right: 0;
+                position: relative;
+                z-index: 3;
+
 
                 img {
                     height: 24px;
@@ -2492,6 +2499,8 @@ footer {
 
             .menu-right {
                 order: 3;
+                position: relative;
+                z-index: 3;
 
                 .menu-user {
                     a, button {
@@ -2501,6 +2510,7 @@ footer {
                             width: 20px;
                         }
                     }
+                    
                     .profile {
                         margin: 0 20px;
                     }
@@ -2523,9 +2533,124 @@ footer {
             }
 
             .navbar-collapse {
-                position: absolute;
+                position: fixed;
                 left: 0;
-                top: 90px;
+                top: 0;
+                background: #343E48;
+                width: 250px;
+                height: 100vh;
+                border-radius: 0 8px 8px 0;
+                padding-top: 50px;
+                overflow: hidden;
+
+                &:before {
+                    width: 100%;
+                    height: 50px;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    content: '';
+                    background: #FFFFFF;
+                    border-radius: 0 8px 8px 8px;
+                }
+
+                .navbar-nav .nav-item {
+                    &.show {
+                        .nav-link {
+                            &:before {
+                                transform: rotate(90deg);
+                            }
+                        }
+                    }
+
+                    .nav-link {
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 16px;
+                        color: #FFFFFF;
+                        margin-top: 25px;
+                        padding: 0 21px 0 32px;
+                        position: relative;
+
+
+                        &:before {
+                            background-image: url(../img/menu-arrow.png);
+                            width: 6px;
+                            height: 10px;
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            right: 21px;
+                        }
+                    }
+
+                    .dropdown-menu {
+                        background: #343e48;
+                        padding: 12px 0;
+                        box-shadow: none;
+
+                        .dropdown-item{
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 14px;
+                            line-height: 14px;
+                            color: #F2F2F2;
+
+                            svg {
+                                path {
+                                    fill: #FFFFFF !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .home-banner {
+        .block {
+            height: 100px;
+            padding: 17px 175px 17px 12px;
+
+            h2 {
+                font-size: 10px;
+                line-height: 12px;
+            }
+
+            p {
+                font-size: 8px;
+                line-height: 10px;
+                margin-bottom: 0;
+            }
+
+            a {
+                width: 81px;
+                height: 20px;
+                margin-top: 10px;
+                font-size: 8px;
+                line-height: 20px;
+            }
+
+            img {
+                height: 100%;
+            }
+        }
+    }
+
+    .home-menu {
+        .container {
+            .swiper-container-menu {
+                .swiper-button-next {
+                    display: none;
+                }
+
+                a {
+                    font-size: 10px;
+                    line-height: 12px;
+                    margin-right: 35px !important;
+                }
             }
         }
     }
@@ -2533,6 +2658,7 @@ footer {
 
     .container {
         width: 320px;
+        padding: 0;
     }
 
     header {
