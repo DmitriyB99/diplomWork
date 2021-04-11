@@ -13,13 +13,13 @@
     <title>Bis Asia</title>
   </head>
   <body>
-    <button data-bs-toggle="modal" data-bs-target="#login">логин</button>
 
+    <!-- <button data-bs-toggle="modal" data-bs-target="#login">логин</button>
     <button data-bs-toggle="modal" data-bs-target="#register">регистрация</button>
     <button data-bs-toggle="modal" data-bs-target="#subscribe">Подписка</button>
     <button data-bs-toggle="modal" data-bs-target="#check-phone">Подтвердите номер</button>
     <button data-bs-toggle="modal" data-bs-target="#reviews">Добавить отзыв</button>
-    <button data-bs-toggle="modal" data-bs-target="#pass">Восстановление пароля</button>
+    <button data-bs-toggle="modal" data-bs-target="#pass">Восстановление пароля</button> -->
 
     <div class="wrapper">
         <header>
@@ -57,21 +57,22 @@
                                 </li>
                             </ul>
 
-                            <div class="menu-right justify-content-between d-flex">
-                                <div class="menu-contact">
-                                    <a href="tel:+77085592513">
-                                        <img src="img/phone.svg" alt="">
-                                        <span>+7 (708) 559-25-13</span>
-                                    </a>
-                                </div>
-                                <div class="menu-user">
-                                    <button class="profile" data-bs-toggle="modal" data-bs-target="#login">
-                                        <img src="img/person.svg" alt="">
-                                    </button>
-                                    <a href="" class="cart">
-                                        <img src="img/shopping-cart.svg" alt="">
-                                    </a>
-                                </div>
+                            
+                        </div>
+                        <div class="menu-right justify-content-between d-flex">
+                            <div class="menu-contact">
+                                <a href="tel:+77085592513">
+                                    <img src="img/phone.svg" alt="">
+                                    <span>+7 (708) 559-25-13</span>
+                                </a>
+                            </div>
+                            <div class="menu-user">
+                                <button class="profile" data-bs-toggle="modal" data-bs-target="#login">
+                                    <img src="img/person.svg" alt="">
+                                </button>
+                                <a href="" class="cart">
+                                    <img src="img/shopping-cart.svg" alt="">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -182,7 +183,20 @@
                                 <div class="price">
                                     <b>4 000 тг/кг</b> <span>За 500гр.</span>
                                 </div>
-                                <a href="" class="to-cart">В корзину</a>
+                                <div class="cart-add d-flex">
+                                    <div class="cart-product-toggle">
+                                        <div class="input-range">
+                                            <span class="min button">
+                                                -
+                                            </span>
+                                            <input type="text" name="qty" id="qty" maxlength="12" />
+                                            <span class="plus button">
+                                                +
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <a href="" class="to-cart"></a>
+                                </div>
                         </div>
 
                         <div class="product">
