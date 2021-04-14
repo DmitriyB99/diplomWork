@@ -1,18 +1,19 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="fonts/fonts.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="scripts/script.js" defer></script>
-    <title>Bis Asia</title>
-  </head>
-  <body>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="scripts/script.js" defer></script>
+        <title>Bis Asia</title>
+    </head>
+
+    <body>
 
     <!-- <button data-bs-toggle="modal" data-bs-target="#login">логин</button>
     <button data-bs-toggle="modal" data-bs-target="#register">регистрация</button>
@@ -22,6 +23,109 @@
     <button data-bs-toggle="modal" data-bs-target="#pass">Восстановление пароля</button> -->
 
     <div class="wrapper">
+
+        <div class="mobile-bottom-menu">
+            <a href="">
+                <img src="img/m1.svg" alt="">
+            </a>
+
+            <a href="">
+                <img src="img/m2.svg" alt="">
+            </a>
+
+            <a href="" class="cart-mob" data-count="1">
+                <img src="img/m3.svg" alt="">
+            </a>
+
+            <a href="">
+                <img src="img/m4.svg" alt="">
+            </a>
+        </div>
+
+        <div class="cart-popup">
+            <div class="cart-top">
+                <h2 class="title">Корзина</h2>
+                <div class="cart-product-items">
+                    <div class="cart-product-item">
+                        <div class="cart-product-left d-flex">
+                            <img src="img/cart-product-remove.svg" alt="" class="cart-product-remove">
+                            <div class="cart-product-img">
+                                <img src="img/cart-product.svg" alt="">
+                            </div>
+                            <div class="cart-product-name">Курага</div>
+                        </div>
+                        <div class="cart-product-right d-flex">
+                            <div class="cart-product-toggle">
+                                <div class="input-range" data-desc="Ед. изм.: упаковка">
+                                    <span class="min button">
+                                        -
+                                    </span>
+                                    <input type="text" name="qty" id="qty" maxlength="12" />
+                                    <span class="plus button">
+                                        +
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="cart-product-price">1750 тг</div>
+                        </div>
+                    </div>
+                    <div class="cart-product-item">
+                        <div class="cart-product-left d-flex">
+                            <img src="img/cart-product-remove.svg" alt="" class="cart-product-remove">
+                            <div class="cart-product-img">
+                                <img src="img/cart-product.svg" alt="">
+                            </div>
+                            <div class="cart-product-name">Курага</div>
+                        </div>
+                        <div class="cart-product-right d-flex">
+                            <div class="cart-product-toggle">
+                                <div class="input-range" data-desc="Ед. изм.: упаковка">
+                                    <span class="min button">
+                                        -
+                                    </span>
+                                    <input type="text" name="qty" id="qty" maxlength="12" />
+                                    <span class="plus button">
+                                        +
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="cart-product-price">1750 тг</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="promocode">
+                    <h2 class="title">Промокод</h2>
+                    <div class="promo-block">
+                        <div class="input-block">
+                            <input type="text" name="" placeholder="Введите промокод">
+                            <button>Подтвердить</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-sidebar-bottom">
+                    <div class="purchase-info">
+                        <div class="title">Закажите на 15000 тг и получите</div>
+                        <div class="line">
+                            <img src="img/pig.svg" alt=""><span><b>150 тг</b> на бонусный счет</span>
+                        </div>
+                        <div class="line">
+                            <img src="img/veh.svg" alt=""><span><b>Бесплатная доставка</b></span>
+                        </div>
+                        <div class="range-slide">
+                            <div class="range-line" data-mins="0" data-maxs="15000">
+                                <div style="width:40%" class="green-line"></div>
+                                <div class="round" data-min="5000 (минимальный заказ)"></div>
+                            </div>
+                            <div class="range-text">Осталось <b>9990 тг</b> до бесплатной доставки</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
         <header>
                 <nav class="navbar navbar-expand-lg navbar-light">                    
                     <div class="container">
@@ -743,9 +847,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
     -->
 
-    <script>$('#myModal').on('shown.bs.modal', function () {
+    <script>
+
+        $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')
-    })
+    });
+
+    $('.navbar-toggler').on('click', function () {
+        $(this).toggleClass('change-button');
+    });
+
+
     </script>
   </body>
 </html>
