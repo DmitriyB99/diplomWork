@@ -33,9 +33,9 @@
                 <img src="img/m2.svg" alt="">
             </a>
 
-            <a href="" class="cart-mob" data-count="1">
+            <span class="cart-mob" data-count="1">
                 <img src="img/m3.svg" alt="">
-            </a>
+            </span>
 
             <a href="">
                 <img src="img/m4.svg" alt="">
@@ -43,6 +43,7 @@
         </div>
 
         <div class="cart-popup">
+            <span class="close-cart-popup">x</span>
             <div class="cart-top">
                 <h2 class="title">Корзина</h2>
                 <div class="cart-product-items">
@@ -103,6 +104,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="cart-sidebar-bottom">
                     <div class="purchase-info">
                         <div class="title">Закажите на 15000 тг и получите</div>
@@ -120,6 +122,29 @@
                             <div class="range-text">Осталось <b>9990 тг</b> до бесплатной доставки</div>
                         </div>
                     </div>
+                </div>
+
+                <div class="cart-order-popup">
+                    <form action="">
+                        <div class="cart-number">Заказ №47593</div>
+                        <div class="d-flex">
+                            <div class="left-popup">
+                                <div class="cart-line">
+                                    <span>Сумма покупки</span><span>3500 тг</span>
+                                </div>
+                                <div class="cart-line">
+                                    <span>Промокод</span><span class="grn">- 500 тг</span>
+                                </div>
+                            </div>
+                            <div class="cart-line_flx">                                
+                                <span>Итого к оплате</span>
+                                <b>3000 тг</b>
+                            </div>
+                        </div>
+
+                        <button class="cart-btn" onclick="location.href='./cart-order.html'" type="button">
+                            Оформить заказ</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -856,6 +881,15 @@
     $('.navbar-toggler').on('click', function () {
         $(this).toggleClass('change-button');
     });
+
+    $('.cart-mob').on('click', function () {
+        $('.cart-popup').toggleClass('active');
+    });
+
+    $('.close-cart-popup').on('click', function () {
+        $('.cart-popup').toggleClass('active');
+    });
+    
 
 
     </script>
