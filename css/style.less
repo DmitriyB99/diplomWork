@@ -2458,6 +2458,10 @@ footer {
 }
 
 @media(min-width: 992px) and (max-width:1199px) {
+    .card-product .card-top .card-sidebar .pay-block .pay-popup {
+        width: 160px;
+    }
+    
     .cart-product.profile .cart-wrapper .form-line .group-block .group-line.g-name {
         width: 48%;
     }
@@ -2483,16 +2487,16 @@ footer {
     }
 
     .cart-product.cart-product_order .cart-wrapper {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .cart-product.cart-product_order .cart-wrapper .cart-info {
-        width: 100% !important;
+        width: 55% !important;
     }
 
     .cart-product.cart-product_order .cart-wrapper .cart-sidebar {
-        width: 100%;
-        margin-left: 0;
+        width: 43%;
+        margin-left: 45px;
     }
 
     .card-product .card-bottom .card-info .tab-content > .tab-pane {
@@ -2523,97 +2527,96 @@ footer {
 }
 
 @media(min-width: 768px) and (max-width:991px) {
-    .cart-product {
-        padding-top: 120px;
+    .cart-product.profile .cart-wrapper .form-line.g-father {
+        width: 100%;
+    } 
+
+    .cart-product.profile .cart-wrapper .form-line .group-block .group-line.g-surname {
+        width: 100%;
+    }
+
+    .cart-product.profile .cart-wrapper .form-line .group-block .group-line.g-name {
+        width: 100%;
     }
     
+    .cart-product.profile .cart-wrapper .form-line .group-block .group-line {
+        width: 100%;
+    }
+
+    .cart-product.profile .cart-wrapper .form-line .group-block {
+        flex-wrap: wrap;
+    }
+
+    .cart-product.profile .block-order > div .cart-product-item .pcs {
+        margin-right: 15px;
+        margin-left: 15px;
+        width: 100.78px;
+    }
+
     .cart-product.profile .block-order > div .cart-product-item {
         padding: 15px 15px 15px 15px;
     }
 
     .cart-product.profile .block-order > div .cart-product-item .cart-product-img {
-        width: 48.92px;
-        height: 38.3px;
-        margin-right: 13px;
+        margin-right: 15px;
     }
 
-    .cart-product.profile .block-order > div .cart-product-item .pcs {
-        width: 48px;
-        height: 30px;
-        line-height: 30px;
+    .home-banner, .home-banner, .page-content {
+        padding-top: 100px;
     }
 
-    .cart-product.profile .cart-wrapper .form-line .group-block .group-line.g-name {
-        width: 48%;
+    .cart-product.cart-product_order .cart-wrapper .cart-info .cart-sum .block-info {
+        width: auto;
     }
 
-    .cart-product.profile .cart-wrapper .form-line .group-block .group-line.g-surname {
-        width: 48%;
+    .cart-product.cart-product_order .cart-wrapper .cart-sidebar-right .promo-block .input-block input {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
     }
 
-    .cart-product.profile .cart-wrapper .form-line.g-father {
-        width: 48%;
+    .cart-product.cart-product_order .cart-wrapper .cart-sidebar-right .promo-block .input-block button {
+        width: 100%;
     }
 
-    .cart-product.profile .cart-wrapper .form-line .group-block .group-line {
-        width: 48%;
+    .cart-product.cart-product_order .cart-wrapper .cart-sidebar-right .promo-block .input-block {
+        flex-wrap: wrap;
     }
 
-    .cart-product.profile .pad {
-        display: flex;
-        justify-content: space-between;
-        > div {
-            width: 48%;
-        }
+    .cart-product.cart-product_order .cart-wrapper .cart-sidebar-right .promo-block {
+        margin-bottom: 0;
     }
 
-    .cart-product.cart-product_order .cart-wrapper {
-        flex-direction: column;
+    .cart-product {
+        padding: 100px 0;
     }
 
     .cart-product.cart-product_order .cart-wrapper .cart-info {
-        width: 100% !important;
+        width: 55%!important;
     }
 
     .cart-product.cart-product_order .cart-wrapper .cart-sidebar {
-        width: 100%;
-        margin-left: 0;
+        width: 43%!important;
     }
 
-    .card-product .card-bottom .card-info .tab-content > .tab-pane {
-        width: 100% !important;
-    }
-
-
-    .card-product .card-bottom .card-info .tab-content > .tab-pane {
-        width: 100% !important;
-    }
-
-    .card-product .card-top .card-img {
-        width: 55%;
-        height: 365px;
-    }
-
-    .card-product .card-top .card-sidebar {
+    .cart-product.cart-product_order .cart-wrapper .cart-sidebar-right {
         width: 43%;
     }
 
-    .card-product .card-top .card-sidebar .pay-block .pay-popup {
-        width: 185px;
+    .cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items .cart-product-left .cart-product-img {
+        width: 81px;
+        height: 52px;
+        margin: 0 10px 0 0;
     }
 
-    .card-product .card-bottom {
-        margin-top: 60px;
-
-        .card-info {
-            width: 100%;
-        }
-
-        .card-sidebar {
-            width: 100%;
-        }
+    .cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items .cart-product-right .cart-product-price {
+        margin-left: 25px;
+        font-size: 17.9203px;
+        line-height: 19px;
     }
-    
+
+
+
     header {
         position: fixed;
 
@@ -2766,6 +2769,32 @@ footer {
 
 
 @media (max-width: 767px) {
+    .home-banner {
+        padding-top: 75px;
+    }
+
+    .cart-product.cart-product_order .cart-wrapper .cart-sidebar-right {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+
+        form {
+            margin-bottom: 0;
+        }
+    }
+
+    .cart-product.cart-product_order .cart-wrapper .cart-info .cart-bottom .cart-sidebar-bottom {
+        margin-bottom: 40px;
+    }
+    
+    .cart-product.cart-product_order .cart-wrapper .cart-sidebar-right form {
+        margin-left: 0;
+    }
+
+    .cart-product.cart-product_order .cart-wrapper .cart-sidebar-right .promo-block {
+        margin-left: 0;
+        margin-bottom: 40px;
+    }
 
     .change-button {
         background: #00AC4E;
@@ -3170,7 +3199,7 @@ footer {
     }
 
     .card-product {
-        padding: 50px 0;
+        padding: 75px 0;
 
         .card-top {
             flex-direction: column;
