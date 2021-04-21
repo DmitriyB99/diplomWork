@@ -15,12 +15,12 @@
 
     <body>
 
-    <!-- <button data-bs-toggle="modal" data-bs-target="#login">логин</button>
+    <button data-bs-toggle="modal" data-bs-target="#login">логин</button>
     <button data-bs-toggle="modal" data-bs-target="#register">регистрация</button>
     <button data-bs-toggle="modal" data-bs-target="#subscribe">Подписка</button>
     <button data-bs-toggle="modal" data-bs-target="#check-phone">Подтвердите номер</button>
     <button data-bs-toggle="modal" data-bs-target="#reviews">Добавить отзыв</button>
-    <button data-bs-toggle="modal" data-bs-target="#pass">Восстановление пароля</button> -->
+    <button data-bs-toggle="modal" data-bs-target="#pass">Восстановление пароля</button>
 
     <div class="wrapper">
 
@@ -275,7 +275,7 @@
                                 <button class="profile" data-bs-toggle="modal" data-bs-target="#login">
                                     <img src="img/person.svg" alt="">
                                 </button>
-                                <a href="" class="cart">
+                                <a href="cart.html" class="cart">
                                     <img src="img/shopping-cart.svg" alt="">
                                 </a>
                             </div>
@@ -321,41 +321,33 @@
         <section class="home-menu">
             <div class="container">
                 <div class="swiper-container-menu">
-                    <div class="swiper-wrapper">    
-                        <a href="" class="swiper-slide active">
+                    <div class="swiper-wrapper categories">    
+                        <a href="#" class="swiper-slide category active view-all">
+                            <span>Все товары</span>
+                        </a>
+
+                        <a href="#" class="swiper-slide category">
                             <span>Сухофрукты</span>
                         </a>
                     
-                        <a href="" class="swiper-slide">
+                        <a href="#" class="swiper-slide category">
                             <span>Орехи</span>
                         </a>
 
-                        <a href="" class="swiper-slide">
+                        <a href="#" class="swiper-slide category">
                             <span>Чай</span>
                         </a>
 
-                        <a href="" class="swiper-slide">
-                            <span>Сухофрукты</span>
+                        <a href="#" class="swiper-slide category">
+                            <span>Посуда</span>
                         </a>
                     
-                        <a href="" class="swiper-slide">
-                            <span>Орехи</span>
+                        <a href="#" class="swiper-slide category">
+                            <span>Конфеты</span>
                         </a>
 
-                        <a href="" class="swiper-slide">
-                            <span>Чай</span>
-                        </a>
-                    
-                        <a href="" class="swiper-slide">
-                            <span>Сухофрукты</span>
-                        </a>
-                    
-                        <a href="" class="swiper-slide">
-                            <span>Орехи</span>
-                        </a>
-
-                        <a href="" class="swiper-slide">
-                            <span>Чай</span>
+                        <a href="#" class="swiper-slide category">
+                            <span>Сладости</span>
                         </a>
                     </div>
 
@@ -369,7 +361,7 @@
         <section class="home-products">
             <div class="container">
                     <h3 class="all_products">Все товары</h3>
-                    <div class="products-wrapper">                        
+                    <div class="products-wrapper long-goods-list">                        
                         <div class="product">
                             <div class="img">
                                 <img src="https://foodandmood.com.ua/i/70/97/95/709795/image_main/9444eece350fce7b6b55d971dd539f16-quality_75Xresize_crop_1Xallow_enlarge_0Xw_740Xh_493.jpg" alt="">
@@ -834,13 +826,13 @@
                     </div>
                     <div class="footer-center">
                         <div class="social">
-                            <a href="">Мы в Facebook ></a>
-                            <a href="">Мы в Instagram ></a>
+                            <a href="https://www.facebook.com/gytman99">Мы в Facebook ></a>
+                            <a href="https://www.instagram.com/b_rezhnev_dsm/">Мы в Instagram ></a>
                         </div>
                     </div>
                     <div class="footer-right">
                         <div class="person">
-                            <a href=""><img src="img/person-wh.svg" alt=""><span>Войти / Регистрация</span></a>
+                            <button data-bs-toggle="modal" data-bs-target="#register"><img src="img/person-wh.svg" alt=""><span>Войти / Регистрация</span></button>
                         </div>
                     </div>
                 </div>
@@ -873,9 +865,10 @@
     -->
 
     <script>
+        
 
     $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
+        $('#myInput').trigger('focus')
     });
 
     $('.navbar-toggler').on('click', function () {
@@ -889,8 +882,10 @@
     $('.close-cart-popup').on('click', function () {
         $('.cart-popup').toggleClass('active');
     });
-    
 
+    $('.close').on('click', function () {
+        $('.modal').toggleClass('show');
+    })
 
     </script>
   </body>
@@ -901,7 +896,7 @@
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="modal-body">
@@ -919,7 +914,7 @@
                         </div>
                         <div class="forgot-password">Забыли пароль?</div>
                         <button>Войти</button>
-                        <div class="modal-txt">Впервые у нас? <span>Зарегистрироваться</span></div>
+                        <div class="modal-txt">Впервые у нас? <span data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#register">Зарегистрироваться</span></div>
                     </form>
 
                 </div>
@@ -936,7 +931,7 @@
 <div class="modal fade" id="check-phone" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="modal-body">
@@ -973,7 +968,7 @@
 <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="modal-body">
@@ -1017,7 +1012,7 @@
 <div class="modal fade" id="subscribe" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="modal-body">
@@ -1048,7 +1043,7 @@
 <div class="modal fade" id="reviews" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog reviews" role="document">
         <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="modal-body">
@@ -1089,7 +1084,7 @@
 <div class="modal fade" id="pass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="modal-body">
@@ -1109,7 +1104,7 @@
                             <input type="text" name="" placeholder="Подтвердите пароль" class="pass">
                         </div>
                         <div class="btn-block-2">
-                            <button class="decline" data-dismiss="modal" aria-label="Close">Отменить</button><button>Обновить пароль</button>
+                            <button class="decline" data-bs-dismiss="modal" aria-label="Close">Отменить</button><button>Обновить пароль</button>
                         </div>
 
                     </form>

@@ -1,0 +1,210 @@
+﻿[
+
+    {
+      "id": "001",
+      "img": "https://foodandmood.com.ua/i/70/97/95/709795/image_main/9444eece350fce7b6b55d971dd539f16-quality_75Xresize_crop_1Xallow_enlarge_0Xw_740Xh_493.jpg",
+      "name": "Курага 'Золотая' ",
+      "description": "Кислая, Узбекистан",
+      "price": "1500",
+      "category": "сухофрукты"
+  
+    },
+    {
+      "id": "002",
+      "img": "https://avatars.mds.yandex.net/get-zen_doc/1678002/pub_5e569c8f74b4ca4526694dd0_5e56c638161a0b098eda5e3e/scale_1200",
+      "name": "Чернослив",
+      "description": "С косточкой, Молдавия",
+      "price": "2100",
+      "category": "сухофрукты"
+      
+    },
+    {
+      "id": "003",
+      "img": "https://ikraketa.ru/images/orehi/izyumsoyagicherniy1.jpg",
+      "name": "Изюм",
+      "description": "Черный сояги, натуральный",
+      "price": "2500",
+      "category": "сухофрукты"
+      
+    },
+    {
+      "id": "004",
+      "img": "https://hotbeautyspot.ru/wp-content/uploads/2019/11/health_chestnut-and-your-reins_1280K-1024x682.jpg",
+      "name": "Фисташки иранские",
+      "description": "1 сорт",
+      "price": "5200",
+      "category": "орехи"
+      
+    },
+    {
+      "id": "005",
+      "img": "https://silaorekha.ru/wp-content/uploads/2019/11/1-4.jpg",
+      "name": "Миндаль",
+      "description": "сырой, очищенный",
+      "price": "4590",
+      "category": "орехи"
+     
+    },
+    {
+      "id": "006",
+      "img": "https://vredilipolza.ru/wp-content/uploads/2020/02/main-image-2-2.jpg",
+      "name": "Кешью",
+      "description": "сырой, 2 сорт",
+      "price": "4600",
+      "category": "орехи"
+      
+    },
+    {
+      "id": "007",
+      "img": "http://www.wofwom.com/wp-content/uploads/2020/04/cukatu.jpg",
+      "name": "Цукаты",
+      "description": "ассорти, кубики",
+      "price": "2450",
+      "category": "цукаты"
+      
+    },
+    {
+      "id": "008",
+      "img": "https://mrfilin.com/wp-content/uploads/7/4/7/747bfda8704552315ba5b302fac46bd7.jpg",
+      "name": "Манго",
+      "description": "Вьетнам, 1кг",
+      "price": "3300",
+      "category": "цукаты"
+      
+    },
+    {
+    "id": "009",
+    "img": "https://fruits71.ru/upload/iblock/ef2/ef2dae5b75c7c245576134b980acd986.jpg",
+    "name": "Ананас",
+    "description": "в сахаре, 1кг",
+    "price": "2900",
+    "category": "цукаты"
+    
+  },
+  {
+    "id": "010",
+    "img": "https://selcdn.fedsp.com/crater/15/1126/367602ace15d81a5.jpg",
+    "name": "Нават",
+    "description": "желтый, Узбекистан",
+    "price": "800",
+    "category": "сладости"
+    
+  },{
+    "id": "011",
+    "img": "https://images.ru.prom.st/716364590_w640_h640_rahat-lukum-koska-s.jpg",
+    "name": "Рахат-лукум",
+    "description": "Ochre",
+    "price": "2000",
+    "category": "сладости"
+    
+  },
+  {
+    "id": "012",
+    "img": "https://cstor.nn2.ru/forum/data/forum/images/2019-07/234672603-img_1590.jpg",
+    "name": "Халва",
+    "description": "Самарканд, 500гр",
+    "price": "1800",
+    "category": "сладости"
+    
+  },
+  {
+    "id": "013",
+    "img": "https://s9.eshoper.ru/0g/2587102116c9456f9f87c2c5d8b2403b.jpg",
+    "name": "Кунжут",
+    "description": "белый",
+    "price": "2000",
+    "category": "специи"
+    
+  },
+  {
+    "id": "014",
+    "img": "https://pbs.twimg.com/media/EVooirRUUAAzLV0.jpg",
+    "name": "Куркума",
+    "description": "Индия",
+    "price": "3000",
+    "category": "специи"
+    
+  },
+  {
+    "id": "015",
+    "img": "https://eda-land.ru/images/article/orig/2018/09/molotyj-koriandr-osobennosti-primeneniya-i-svojstva.jpg",
+    "name": "Кориандр",
+    "description": "молотый",
+    "price": "700",
+    "category": "специи"
+    
+  },
+  {
+    "id": "016",
+    "img": "https://images.ru.prom.st/743576840_w640_h640_lyagan-kruglyj-33.jpg",
+    "name": "Лягян",
+    "description": "33см, Самарканд",
+    "price": "4500",
+    "category": "посуда"
+  },
+  {
+    "id": "017",
+    "img": "https://cdn2.static1-sima-land.com/items/2436925/0/700-nw.jpg",
+    "name": "Лягян",
+    "description": "41см, Самарканд",
+    "price": "4000",
+    "category": "посуда"
+  },
+  {
+    "id": "018",
+    "img": "https://rishtan-posuda.ru/wa-data/public/shop/products/05/96/3809605/images/499/499.970.jpg",
+    "name": "Ляган",
+    "description": "31см, Самарканд",
+    "price": "4300",
+    "category": "посуда"
+  },
+  {
+    "id": "019",
+    "img": "https://instagram.fala6-1.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/156577542_3878112818914683_6128905709786300956_n.jpg?tp=1&_nc_ht=instagram.fala6-1.fna.fbcdn.net&_nc_cat=103&_nc_ohc=KojnoAbE3yEAX9kd5iM&tn=DPLWzDT-_hCmb32b&edm=AABBvjUBAAAA&ccb=7-4&oh=0c3ef024b9ba38d6a79cbfed30288ed7&oe=60A667E1&_nc_sid=83d603",
+    "name": "Бокс 'МАМА'",
+    "description": "1,4кг",
+    "price": "8200",
+    "category": "подарочные наборы"
+  },
+  {
+    "id": "020",
+    "img": "https://instagram.fala6-1.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/150594745_196077652208649_9148495435028551608_n.jpg?tp=1&_nc_ht=instagram.fala6-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=jGvGqyAdJhAAX8SGViC&edm=AABBvjUBAAAA&ccb=7-4&oh=273fcf611302f6f34b5f2fdf6b9f9558&oe=60A5B02C&_nc_sid=83d603",
+    "name": "Бокс 'ПАПА'",
+    "description": "1,4кг",
+    "price": "7200",
+    "category": "подарочные наборы"
+  },
+  {
+    "id": "021",
+    "img": "https://instagram.fala6-1.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/152068258_435178664466781_5076091454798643316_n.jpg?tp=1&_nc_ht=instagram.fala6-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=XmdLz1YDWmwAX_r7Cf7&edm=AABBvjUBAAAA&ccb=7-4&oh=58fbbabf5443d1321e75a3d14cb6fbeb&oe=60A59235&_nc_sid=83d603",
+    "name": "Бокс 'РАХМЕТ' ",
+    "description": "28х33 см",
+    "price": "9000",
+    "category": "подарочные наборы"
+  },
+  {
+    "id": "022",
+    "img": "https://althaus-chay.ru/images/companies/1/img/depositphotos-13665050-original.jpg?1583155613325",
+    "name": "Пуэр",
+    "description": "черный, листовой",
+    "price": "23000",
+    "category": "чай"
+  },
+  {
+    "id": "023",
+    "img": "https://avatars.mds.yandex.net/get-zen_doc/1612125/pub_5e94cd7518bc2307840c77dc_5e94d3e5aa749e6d77b8e27c/scale_1200",
+    "name": "Матча",
+    "description": "зеленая",
+    "price": "39000",
+    "category": "чай"
+  },
+  {
+    "id": "024",
+    "img": "https://coream.ru/wp-content/uploads/a/0/9/a097d07a9ad3055f74ad5fa3acddc869.jpg",
+    "name": "Анчан",
+    "description": "синий, Тайланд",
+    "price": "30000",
+    "category": "чай"
+  }
+  ]
+  

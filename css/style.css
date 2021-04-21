@@ -782,15 +782,22 @@ footer .footer-wrapper .footer-center .social a {
   text-transform: uppercase;
   margin-bottom: 26px;
 }
-footer .footer-wrapper .footer-right .person a {
+footer .footer-wrapper .footer-right .person button {
   display: flex;
   align-items: center;
   font-weight: 500;
   font-size: 15.4259px;
   line-height: 32px;
+  color: #FFFFFF;
+  text-decoration: none;
+  border: none;
+  background: none;
 }
-footer .footer-wrapper .footer-right .person a img {
+footer .footer-wrapper .footer-right .person button img {
   margin-right: 7px;
+}
+.show-goods .long-goods {
+  display: block;
 }
 .green_btn {
   background: #00AC4E;
@@ -2594,11 +2601,11 @@ footer .footer-wrapper .footer-right .person a img {
   footer .footer-wrapper .footer-right {
     margin-top: 12px;
   }
-  footer .footer-wrapper .footer-right .person a {
+  footer .footer-wrapper .footer-right .person button {
     font-size: 10px;
     line-height: 17px;
   }
-  footer .footer-wrapper .footer-right .person a img {
+  footer .footer-wrapper .footer-right .person button img {
     margin-right: 2px;
     width: 15px;
   }
