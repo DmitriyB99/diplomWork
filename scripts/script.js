@@ -61,9 +61,6 @@ const showGifts = document.querySelectorAll('.gifts');
 const showSpice = document.querySelectorAll('.spice');
 
 
-
-
-
 const checkGoods = () => {
 
 	const data = [];
@@ -204,6 +201,7 @@ showSpice.forEach(item => {
 	})
 });
 
-
-
-
+const showAllInstantly = () => {
+	getGoods().then(renderCards);
+}
+showAllInstantly();
