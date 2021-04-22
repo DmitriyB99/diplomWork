@@ -47,9 +47,22 @@ jQuery(function(){
 })
 
 const longGoodsList = document.querySelector('.long-goods-list');
-const viewAll = document.querySelectorAll('.view-all')
+const viewAll = document.querySelectorAll('.view-all');
+const categoriesNav = document.querySelectorAll('.category:not(.view-all)');
 const categories = document.querySelector('.categories');
 const category = document.querySelectorAll('.category');
+const showSweets = document.querySelectorAll('.sweets');
+const showDriedFruits = document.querySelectorAll('.dried-fruits');
+const showNuts = document.querySelectorAll('.nuts');
+const showTea = document.querySelectorAll('.tea');
+const showDishes = document.querySelectorAll('.dishes');
+const showCandiedFruits = document.querySelectorAll('.candied-fruits');
+const showGifts = document.querySelectorAll('.gifts');
+const showSpice = document.querySelectorAll('.spice');
+
+
+
+
 
 const checkGoods = () => {
 
@@ -92,6 +105,17 @@ const createCard = function ({ name, img, description, price }) {
 	return card;
 };
 
+categories.addEventListener('click', (e) => {
+    e.preventDefault();
+    const currentElem = e.target.closest('.category');
+    if (currentElem) {
+        category.forEach((el) => {
+            el.classList.remove('active');
+        })
+        currentElem.classList.add('active')
+    }
+});
+
 const renderCards = data => {
 	longGoodsList.textContent = '';
 	const cards = data.map(createCard);
@@ -108,13 +132,78 @@ viewAll.forEach(elem => {
 	elem.addEventListener('click', showAll)
 });
 
-categories.addEventListener('click', (e) => {
-    e.preventDefault();
+const filterCards = function (field, value) {
+	getGoods()
+		.then (data => data.filter(good => good[field] === value))
+		.then(renderCards);
+};
 
-    if (e.target.closest('.category')) {
-      category.forEach((el) => {
-        el.classList.remove('active');
-      })
-      e.target.classList.add('active')
-    }
-  });
+
+categoriesNav.forEach(link => {
+	link.addEventListener('click', event => {
+		event.preventDefault();
+		const field = link.dataset.field;
+		const value = link.textContent;
+		filterCards(field, value)
+	})
+});
+
+showSweets.forEach(item => {
+	item.addEventListener('click', event => {
+		event.preventDefault();
+		filterCards('category', 'сладости');
+	})
+});
+
+showDriedFruits.forEach(item => {
+	item.addEventListener('click', event => {
+		event.preventDefault();
+		filterCards('category', 'сухофрукты');
+	})
+});
+
+showNuts.forEach(item => {
+	item.addEventListener('click', event => {
+		event.preventDefault();
+		filterCards('category', 'орехи');
+	})
+});
+
+showTea.forEach(item => {
+	item.addEventListener('click', event => {
+		event.preventDefault();
+		filterCards('category', 'чай');
+	})
+});
+
+showDishes.forEach(item => {
+	item.addEventListener('click', event => {
+		event.preventDefault();
+		filterCards('category', 'посуда');
+	})
+});
+
+showCandiedFruits.forEach(item => {
+	item.addEventListener('click', event => {
+		event.preventDefault();
+		filterCards('category', 'цукаты');
+	})
+});
+
+showGifts.forEach(item => {
+	item.addEventListener('click', event => {
+		event.preventDefault();
+		filterCards('category', 'подарочные наборы');
+	})
+});
+
+showSpice.forEach(item => {
+	item.addEventListener('click', event => {
+		event.preventDefault();
+		filterCards('category', 'специи');
+	})
+});
+
+
+
+
