@@ -60,7 +60,7 @@ const checkGoods = () => {
 const getGoods = checkGoods();
 
 const cart = {
-	cartGoods: JSON.parse(localStorage.getItem('carBigAsia')) || [],
+	cartGoods: JSON.parse(localStorage.getItem('cartBigAsia')) || [],
 	updateLocalStorage() {
 		localStorage.setItem('cartBigAsia', JSON.stringify(this.cartGoods));
 	},
@@ -74,48 +74,33 @@ const cart = {
 		this.updateLocalStorage();
 		this.renderCard();
 	},
-	// renderCard() {
-	// 	cartTableGoods.textContent = '';
-	// 	this.cartGoods.forEach(({ id, name, price, count }) => {
-	// 		const trGood = document.createElement('tr');
-	// 		trGood.className = 'cart-item';
-	// 		trGood.dataset.id = id;
-
-	// 		trGood.innerHTML = `
-	// 			<td>${name}</td>
-	// 			<td>${price}$</td>
-	// 			<td><button class="cart-btn-minus">-</button></td>
-	// 			<td>${count}</td>
-	// 			<td><button class="cart-btn-plus">+</button></td>
-	// 			<td>${price * count}$</td>
-	// 			<td><button class="cart-btn-delete">x</button></td>
-	// 		`;
-	// 		cartTableGoods.append(trGood);
-	// 	});
-		
-	// 	const totalPrice = this.cartGoods.reduce((sum, item) => {
-	// 		return sum + item.price * item.count;
-	// 	}, 0);
-
-	// 	cardTableTotal.textContent = totalPrice +'$';
-
-	// },
-
+	plusGood(id) {
+		for (const item of this.cartGoods) {
+			if (item.id === id) {
+				item.count++;
+				break;
+			}
+		}
+		this.updateLocalStorage();		
+	},
 	addCartGoods(id){
 		const goodItem = this.cartGoods.find(item => item.id === id);
-
+		if (goodItem) {
+			this.plusGood(id);
+		} else {
 			getGoods()
 				.then(data => data.find(item => item.id === id))
-				.then(({ id, name, price }) => {
+				.then(({ id, name, price, img }) => {
 					this.cartGoods.push({
 						id,
 						name,
 						price,
+						img,
 						count: 1
 					});
 					this.updateLocalStorage();
 				});
-		
+		}
 		
 	},
 }
@@ -256,3 +241,5 @@ document.body.addEventListener('click', event => {
 		cart.addCartGoods(addToCart.dataset.id)
 	}
 })
+
+console.log(JSON.parse(localStorage.getItem('cartBigAsia')));

@@ -606,11 +606,6 @@ header .menu-right .menu-user button {
   border: none;
   background: none;
 }
-.home-products .products-wrapper .product .cart-add .cart-product-toggle .input-range span.button {
-  width: 30%;
-  cursor: pointer;
-  text-align: center;
-}
 .home-products .products-wrapper .product .cart-add button.add-to-cart {
   border: none;
   width: 49px;
@@ -1853,10 +1848,20 @@ footer .footer-wrapper .footer-right .person button img {
   text-align: center;
   align-items: center;
 }
+.cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items .cart-product-left button.cart-btn-delete {
+  border: none;
+  background: none;
+  font-size: 25px;
+}
 .cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items .cart-product-left .cart-product-img {
   width: 78px;
   height: 58px;
   margin: 0 25px 0 15px;
+}
+.cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items .cart-product-left .cart-product-img img {
+  width: 78px;
+  height: 58px;
+  border-radius: 5px;
 }
 .cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items .cart-product-left .cart-product-name {
   font-size: 16px;
@@ -1901,9 +1906,11 @@ footer .footer-wrapper .footer-right .person button img {
   border: none;
   background: none;
 }
-.cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items .cart-product-right .cart-product-toggle .input-range span.button {
+.cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items .cart-product-right .cart-product-toggle .input-range button.cart-btn-minus,
+.cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items .cart-product-right .cart-product-toggle .input-range .cart-btn-plus {
   width: 30%;
-  cursor: pointer;
+  border: none;
+  background: none;
   text-align: center;
 }
 .cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items .cart-product-right .cart-product-price {

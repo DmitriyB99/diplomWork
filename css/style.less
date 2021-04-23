@@ -752,12 +752,6 @@ header {
                             border: none;
                             background: none;
                         }
-
-                        span.button {
-                            width: 30%;
-                            cursor: pointer;
-                            text-align: center;
-                        }
                     }
                 }
 
@@ -2242,10 +2236,22 @@ footer {
                             text-align: center;
                             align-items: center;
 
+                            button.cart-btn-delete {
+                                border: none;
+                                background: none;
+                                font-size: 25px;
+                            }
+
                             .cart-product-img {
                                 width: 78px;
                                 height: 58px;
                                 margin: 0 25px 0 15px;
+
+                                img {
+                                    width: 78px;
+                                    height: 58px;
+                                    border-radius: 5px;
+                                }
                             }
 
                             .cart-product-name {
@@ -2296,9 +2302,10 @@ footer {
                                         background: none;
                                     }
 
-                                    span.button {
+                                    button.cart-btn-minus, .cart-btn-plus {
                                         width: 30%;
-                                        cursor: pointer;
+                                        border: none;
+                                        background: none;
                                         text-align: center;
                                     }
                                 }

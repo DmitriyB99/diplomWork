@@ -1,8 +1,11 @@
-
-const totalPriceCart = document.querySelector('.total-price');
 const cartProductItems = document.querySelectorAll('.cart-product-items');
 const cartProductItems1 = cartProductItems[1];
-console.log(cartProductItems1);
+const priceCart = document.querySelector('.price-cart');
+const totalPrice = document.querySelector('.total-price');
+const discount = document.querySelector('.discount');
+
+
+
 
 const checkGoods = () => {
 
@@ -22,9 +25,9 @@ const checkGoods = () => {
 const getGoods = checkGoods();
 
 const cart = {
-    cartGoods: JSON.parse(localStorage.getItem('carBigAsia')) || [],
+    cartGoods: JSON.parse(localStorage.getItem('cartBigAsia')) || [],
 	updateLocalStorage() {
-		localStorage.setItem('carBigAsia', JSON.stringify(this.cartGoods));
+		localStorage.setItem('cartBigAsia', JSON.stringify(this.cartGoods));
 	},
 	getCountCartGoods() {
 		return this.cartGoods.length
@@ -43,14 +46,14 @@ const cart = {
 	},
 	renderCard() {
 		cartProductItems1.textContent = '';
-		this.cartGoods.forEach(({ id, name, price, count }) => {
+		this.cartGoods.forEach(({ id, name, price, count, img }) => {
 			const divGood = document.createElement('div');
 			divGood.className = 'cart-product-item';
 			divGood.dataset.id = id;
 
 			divGood.innerHTML = `
 				<div class="cart-product-left d-flex">
-					<img src="img/cart-product-remove.svg" alt="product-remove" class="cart-product-remove">
+					<button class="cart-btn-delete">x</button>
 					<div class="cart-product-img">
 						<img src="${img}" alt="${name}">
 					</div>
@@ -59,22 +62,57 @@ const cart = {
 				<div class="cart-product-right d-flex">
 					<div class="cart-product-toggle">
 						<div class="input-range" data-desc="Ед. изм.: упаковка">
-							<span class="min button">-</span>
+							<button class="cart-btn-minus">-</button>
 							<input type="text" maxlength="12" value="${count}" />
-							<span class="plus button">+</span>
+							<button class="cart-btn-plus">+</button>
 						</div>
 					</div>
-					<div class="cart-product-price">${price}</div>
+					<div class="cart-product-price">${price} тг</div>
 				</div>
 			`;
 			cartProductItems1.append(divGood);
 		});
 		
-		const totalPrice = this.cartGoods.reduce((sum, item) => {
+		const totalPriceBeforeDiscount = this.cartGoods.reduce((sum, item) => {
 			return sum + item.price * item.count;
 		}, 0);
 
-		totalPriceCart.textContent = totalPrice +'тг';
+        const totalPriceAfterDiscount = this.cartGoods.reduce((sum, item) => {
+            return sum + item.price * item.count + +discount.textContent;
+        }, 0)
+
+		priceCart.textContent = totalPriceBeforeDiscount + ' тг';
+        totalPrice.textContent = totalPriceAfterDiscount + ' тг';
+
+	},
+    deleteGood(id) {
+		this.cartGoods = this.cartGoods.filter(item => id !== item.id);
+		this.renderCard();
+		this.updateLocalStorage();
+	},
+	minusGood(id) {
+		for (const item of this.cartGoods) {
+			if (item.id === id) {
+				if (item.count <= 1) {
+					this.deleteGood(id);
+				} else {
+					item.count--;
+				}				
+				break;
+			}
+		}
+		this.updateLocalStorage();
+		this.renderCard();		
+	},
+	plusGood(id) {
+		for (const item of this.cartGoods) {
+			if (item.id === id) {
+				item.count++;
+				break;
+			}
+		}
+		this.updateLocalStorage();
+		this.renderCard();		
 	},
 }
 
@@ -87,3 +125,23 @@ document.body.addEventListener('click', event => {
 })
 cart.renderCard();
 
+// cartTableGoods = cartProductItems1
+
+cartProductItems1.addEventListener('click', event => {
+    const target = event.target;
+    if(target.tagName === "BUTTON") {
+        const id = target.closest('.cart-product-item').dataset.id;
+
+        if (target.classList.contains('cart-btn-delete')) {
+			cart.deleteGood(id);
+		};
+
+		if (target.classList.contains('cart-btn-minus')) {
+			cart.minusGood(id);
+		};
+	
+		if (target.classList.contains('cart-btn-plus')) {
+			cart.plusGood(id);
+		};
+    }
+})
