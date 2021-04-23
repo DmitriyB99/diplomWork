@@ -24,27 +24,7 @@ $('.rev-swiper').on('shown.bs.tab', function(e) {
             nextEl: '.swiper-button-next',
         },
     });
-})
-
-jQuery(function(){
-    var j = jQuery;
-    var addInput = '#qty';
-    var n = 1;
-
-    j(addInput).val(n);
-
-    j('.plus').on('click', function(){
-        j(addInput).val(++n);
-    })
-
-    j('.min').on('click', function(){
-        if (n >= 1) {
-            j(addInput).val(--n);
-        } else{
-            
-        }
-    })
-})
+});
 
 const longGoodsList = document.querySelector('.long-goods-list');
 const viewAll = document.querySelectorAll('.view-all');
@@ -59,6 +39,7 @@ const showDishes = document.querySelectorAll('.dishes');
 const showCandiedFruits = document.querySelectorAll('.candied-fruits');
 const showGifts = document.querySelectorAll('.gifts');
 const showSpice = document.querySelectorAll('.spice');
+const cartProductItems = document.querySelector('.cart-product-items');
 
 
 const checkGoods = () => {
@@ -75,9 +56,10 @@ const checkGoods = () => {
 		return data
 	};
 };
+
 const getGoods = checkGoods();
 
-const createCard = function ({ name, img, description, price }) {
+const createCard = function ({ name, img, description, id, price }) {
 	const card = document.createElement('div');
 	card.className = 'product';
 
@@ -97,7 +79,7 @@ const createCard = function ({ name, img, description, price }) {
     <div class="price">
         <b>${price} тг/кг</b> <span>За 500гр.</span>
     </div>
-    <a href="#" class="to-cart">В корзину</a>
+    <button class="add-to-cart" data-id="${id}">В корзину</button>
 	`;
 	return card;
 };

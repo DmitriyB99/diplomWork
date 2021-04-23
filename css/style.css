@@ -611,7 +611,7 @@ header .menu-right .menu-user button {
   cursor: pointer;
   text-align: center;
 }
-.home-products .products-wrapper .product .cart-add a.to-cart {
+.home-products .products-wrapper .product .cart-add button.add-to-cart {
   border: none;
   width: 49px;
   height: 40px;
@@ -622,10 +622,10 @@ header .menu-right .menu-user button {
   border-radius: 5px;
   margin-left: 30px;
 }
-.home-products .products-wrapper .product .cart-add a.to-cart:hover {
+.home-products .products-wrapper .product .cart-add button.add-to-cart:hover {
   text-decoration: none;
 }
-.home-products .products-wrapper .product a.to-cart {
+.home-products .products-wrapper .product button.add-to-cart {
   margin-top: 0px;
   width: 140px;
   height: 42.47px;
@@ -637,8 +637,9 @@ header .menu-right .menu-user button {
   font-weight: 500;
   font-size: 18px;
   color: #FFFFFF;
+  border: none;
 }
-.home-products .products-wrapper .product a.to-cart:hover {
+.home-products .products-wrapper .product button.add-to-cart:hover {
   text-decoration: none;
 }
 .home-products .pagination-block {
@@ -2497,7 +2498,7 @@ footer .footer-wrapper .footer-right .person button img {
     font-size: 6px;
     line-height: 13px;
   }
-  .home-products .products-wrapper .product a.to-cart {
+  .home-products .products-wrapper .product button.add-to-cart {
     width: 108px;
     height: 30px;
     font-size: 14px;
