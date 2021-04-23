@@ -59,6 +59,67 @@ const checkGoods = () => {
 
 const getGoods = checkGoods();
 
+const cart = {
+	cartGoods: JSON.parse(localStorage.getItem('carBigAsia')) || [],
+	updateLocalStorage() {
+		localStorage.setItem('cartBigAsia', JSON.stringify(this.cartGoods));
+	},
+	getCountCartGoods() {
+		return this.cartGoods.length
+	},
+
+	clearCart() {
+		this.cartGoods.length = 0;
+		this.countQuantity();	
+		this.updateLocalStorage();
+		this.renderCard();
+	},
+	// renderCard() {
+	// 	cartTableGoods.textContent = '';
+	// 	this.cartGoods.forEach(({ id, name, price, count }) => {
+	// 		const trGood = document.createElement('tr');
+	// 		trGood.className = 'cart-item';
+	// 		trGood.dataset.id = id;
+
+	// 		trGood.innerHTML = `
+	// 			<td>${name}</td>
+	// 			<td>${price}$</td>
+	// 			<td><button class="cart-btn-minus">-</button></td>
+	// 			<td>${count}</td>
+	// 			<td><button class="cart-btn-plus">+</button></td>
+	// 			<td>${price * count}$</td>
+	// 			<td><button class="cart-btn-delete">x</button></td>
+	// 		`;
+	// 		cartTableGoods.append(trGood);
+	// 	});
+		
+	// 	const totalPrice = this.cartGoods.reduce((sum, item) => {
+	// 		return sum + item.price * item.count;
+	// 	}, 0);
+
+	// 	cardTableTotal.textContent = totalPrice +'$';
+
+	// },
+
+	addCartGoods(id){
+		const goodItem = this.cartGoods.find(item => item.id === id);
+
+			getGoods()
+				.then(data => data.find(item => item.id === id))
+				.then(({ id, name, price }) => {
+					this.cartGoods.push({
+						id,
+						name,
+						price,
+						count: 1
+					});
+					this.updateLocalStorage();
+				});
+		
+		
+	},
+}
+
 const createCard = function ({ name, img, description, id, price }) {
 	const card = document.createElement('div');
 	card.className = 'product';
@@ -187,3 +248,11 @@ const showAllInstantly = () => {
 	getGoods().then(renderCards);
 }
 showAllInstantly();
+
+document.body.addEventListener('click', event => {
+	const addToCart = event.target.closest('.add-to-cart');
+
+	if (addToCart) {
+		cart.addCartGoods(addToCart.dataset.id)
+	}
+})

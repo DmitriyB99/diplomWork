@@ -1,11 +1,30 @@
 
+const totalPriceCart = document.querySelector('.total-price');
+const cartProductItems = document.querySelectorAll('.cart-product-items');
+const cartProductItems1 = cartProductItems[1];
+console.log(cartProductItems1);
 
-const cartProductItems = document.querySelector('.cart-product-items');
+const checkGoods = () => {
+
+	const data = [];
+
+	return async () => { 
+		if (data.length) return data;
+		const result = await fetch('db/db.json');
+		if (!result.ok) {
+			throw 'Ошибка' + result.status
+		} 
+		data.push(...(await result.json()));
+		return data
+	};
+};
+
+const getGoods = checkGoods();
 
 const cart = {
-    cartGoods: JSON.parse(localStorage.getItem('cartWilb')) || [],
+    cartGoods: JSON.parse(localStorage.getItem('carBigAsia')) || [],
 	updateLocalStorage() {
-		localStorage.setItem('cartWilb', JSON.stringify(this.cartGoods));
+		localStorage.setItem('carBigAsia', JSON.stringify(this.cartGoods));
 	},
 	getCountCartGoods() {
 		return this.cartGoods.length
@@ -23,7 +42,7 @@ const cart = {
 		cartCount.textContent = count ? count : '';
 	},
 	renderCard() {
-		cartProductItems.textContent = '';
+		cartProductItems1.textContent = '';
 		this.cartGoods.forEach(({ id, name, price, count }) => {
 			const divGood = document.createElement('div');
 			divGood.className = 'cart-product-item';
@@ -31,7 +50,7 @@ const cart = {
 
 			divGood.innerHTML = `
 				<div class="cart-product-left d-flex">
-					<img src="img/cart-product-remove.svg" alt="product-remov" class="cart-product-remove">
+					<img src="img/cart-product-remove.svg" alt="product-remove" class="cart-product-remove">
 					<div class="cart-product-img">
 						<img src="${img}" alt="${name}">
 					</div>
@@ -48,15 +67,23 @@ const cart = {
 					<div class="cart-product-price">${price}</div>
 				</div>
 			`;
-			cartProductItems.append(divGood);
+			cartProductItems1.append(divGood);
 		});
 		
 		const totalPrice = this.cartGoods.reduce((sum, item) => {
 			return sum + item.price * item.count;
 		}, 0);
 
-		cartProductItems.textContent = totalPrice +'тг';
+		totalPriceCart.textContent = totalPrice +'тг';
 	},
 }
 
+document.body.addEventListener('click', event => {
+	const addToCart = event.target.closest('.add-to-cart');
+
+	if (addToCart) {
+		cart.addCartGoods(addToCart.dataset.id)
+	}
+})
 cart.renderCard();
+
