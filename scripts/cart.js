@@ -32,18 +32,6 @@ const cart = {
 	getCountCartGoods() {
 		return this.cartGoods.length
 	},
-	countQuantity() {	
-		const count = this.cartGoods.reduce((sum, item) => {
-			return sum + item.count
-		}, 0)
-		cartCount.textContent = count ? count : '';
-	},
-	countQuantity() {	
-		const count = this.cartGoods.reduce((sum, item) => {
-			return sum + item.count
-		}, 0)
-		cartCount.textContent = count ? count : '';
-	},
 	renderCard() {
 		cartProductItems1.textContent = '';
 		this.cartGoods.forEach(({ id, name, price, count, img }) => {
@@ -77,8 +65,8 @@ const cart = {
 			return sum + item.price * item.count;
 		}, 0);
 
-        const totalPriceAfterDiscount = this.cartGoods.reduce((sum, item) => {
-            return sum + item.price * item.count + +discount.textContent;
+        const totalPriceAfterDiscount = this.cartGoods.reduce(() => {
+            return totalPriceBeforeDiscount + +discount.textContent;
         }, 0)
 
 		priceCart.textContent = totalPriceBeforeDiscount + ' тг';

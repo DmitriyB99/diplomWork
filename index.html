@@ -33,7 +33,7 @@
                 <img src="img/m2.svg" alt="">
             </a>
 
-            <span class="cart-mob" data-count="1">
+            <span class="cart-mob" data-count="0">
                 <img src="img/m3.svg" alt="">
             </span>
 
@@ -49,7 +49,7 @@
                 <div class="cart-product-items">
                     <div class="cart-product-item">
                         <div class="cart-product-left d-flex">
-                            <img src="img/cart-product-remove.svg" alt="" class="cart-product-remove">
+                            <button class="cart-btn-delete">x</button>
                             <div class="cart-product-img">
                                 <img src="img/cart-product.svg" alt="">
                             </div>
@@ -58,36 +58,9 @@
                         <div class="cart-product-right d-flex">
                             <div class="cart-product-toggle">
                                 <div class="input-range" data-desc="Ед. изм.: упаковка">
-                                    <span class="min button">
-                                        -
-                                    </span>
+                                    <button class="cart-btn-minus">-</button>
                                     <input type="text" name="qty" id="qty" maxlength="12" />
-                                    <span class="plus button">
-                                        +
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="cart-product-price">1750 тг</div>
-                        </div>
-                    </div>
-                    <div class="cart-product-item">
-                        <div class="cart-product-left d-flex">
-                            <img src="img/cart-product-remove.svg" alt="" class="cart-product-remove">
-                            <div class="cart-product-img">
-                                <img src="img/cart-product.svg" alt="">
-                            </div>
-                            <div class="cart-product-name">Курага</div>
-                        </div>
-                        <div class="cart-product-right d-flex">
-                            <div class="cart-product-toggle">
-                                <div class="input-range" data-desc="Ед. изм.: упаковка">
-                                    <span class="min button">
-                                        -
-                                    </span>
-                                    <input type="text" name="qty" id="qty" maxlength="12" />
-                                    <span class="plus button">
-                                        +
-                                    </span>
+                                    <button class="cart-btn-plus">+</button>
                                 </div>
                             </div>
                             <div class="cart-product-price">1750 тг</div>
@@ -130,20 +103,21 @@
                         <div class="d-flex">
                             <div class="left-popup">
                                 <div class="cart-line">
-                                    <span>Сумма покупки</span><span>3500 тг</span>
+                                    <span>Сумма покупки</span><b class="price-cart">3500 тг</b>
                                 </div>
                                 <div class="cart-line">
-                                    <span>Промокод</span><span class="grn">- 500 тг</span>
+                                    <span>Промокод</span><b class="discount grn">-500</b>
                                 </div>
                             </div>
                             <div class="cart-line_flx">                                
                                 <span>Итого к оплате</span>
-                                <b>3000 тг</b>
+                                <p class="total-price">3000 тг</p>
                             </div>
                         </div>
 
                         <button class="cart-btn" onclick="location.href='./cart-order.html'" type="button">
-                            Оформить заказ</button>
+                            Оформить заказ
+                        </button>
                     </form>
                 </div>
             </div>
@@ -369,28 +343,7 @@
         <section class="home-products">
             <div class="container">
                     <h3 class="all_products">Все товары</h3>
-                    <div class="products-wrapper long-goods-list">                        
-                        <div class="product">
-                            <div class="img">
-                                <img src="https://foodandmood.com.ua/i/70/97/95/709795/image_main/9444eece350fce7b6b55d971dd539f16-quality_75Xresize_crop_1Xallow_enlarge_0Xw_740Xh_493.jpg" alt="">
-                            </div>
-                                <a href="" class="title">Курага</a>
-                                <p class="description">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, distinctio.
-                                </p>
-                                <div class="rating">
-                                    <span class="active"></span>
-                                    <span class="active"></span>
-                                    <span class="active"></span>
-                                    <span class="active"></span>
-                                    <span></span>                                    
-                                </div>
-                                <div class="price">
-                                    <b>4 000 тг/кг</b> <span>За 500гр.</span>
-                                </div>
-                                <button class="add-to-cart">В корзину</button>
-                        </div>
-
+                    <div class="products-wrapper long-goods-list">
                     </div>
                     <div class="pagination-block">
                         <nav aria-label="Page navigation example">
