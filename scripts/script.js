@@ -193,7 +193,7 @@ const createCard = function ({ name, img, description, id, price }) {
     <div class="img">
         <img src="${img}" alt="${name}">
     </div>
-    <a href="../card.html" data-id="${id}" class="title">${name}</a>
+    <a href="card.html" data-id="${id}" class="title">${name}</a>
     <p class="description">${description}</p>
     <div class="rating">
         <span class="active"></span>
