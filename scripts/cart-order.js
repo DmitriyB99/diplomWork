@@ -1,10 +1,13 @@
 const cartProductItems = document.querySelectorAll('.cart-product-items')[1];
-const priceCart = document.querySelector('.price-cart');
-const totalPrice = document.querySelector('.total-price');
-const discount = document.querySelector('.discount');
+const priceCartDelivery = document.querySelector('.price-cart-delivery');
+const priceCartPickup = document.querySelector('.price-cart-pickup');
+const totalPrice = document.querySelectorAll('.total-price')[1];
+const delivery = document.querySelector('.delivery-price');
+const pickUp = document.querySelector('.pickup-price');
+const totalPricePickUp = document.querySelectorAll('.total-price')[2];
 
 
-
+console.log(totalPricePickUp);
 
 const checkGoods = () => {
 
@@ -40,7 +43,6 @@ const cart = {
 
 			divGood.innerHTML = `
 				<div class="cart-product-left d-flex">
-					<button class="cart-btn-delete">x</button>
 					<div class="cart-product-img">
 						<img src="${img}" alt="${name}">
 					</div>
@@ -48,10 +50,8 @@ const cart = {
 				</div>
 				<div class="cart-product-right d-flex">
 					<div class="cart-product-toggle">
-						<div class="input-range" data-desc="Ед. изм.: упаковка">
-							<button class="cart-btn-minus">-</button>
-							<input type="text" maxlength="12" value="${count}" />
-							<button class="cart-btn-plus">+</button>
+						<div class="input-range-order" data-desc="Ед. изм.: упаковка">
+							<input type="text" maxlength="12" value="${count}" disabled />
 						</div>
 					</div>
 					<div class="cart-product-price">${price} тг</div>
@@ -65,11 +65,18 @@ const cart = {
 		}, 0);
 
         const totalPriceAfterDiscount = this.cartGoods.reduce(() => {
-            return totalPriceBeforeDiscount + +discount.textContent;
+            return totalPriceBeforeDiscount + +delivery.textContent;
         }, 0)
 
-		priceCart.textContent = totalPriceBeforeDiscount + ' тг';
+        const totalPriceAfterDiscountPickup = this.cartGoods.reduce(() => {
+            return totalPriceBeforeDiscount + +pickUp.textContent;
+        }, 0)
+
+		priceCartDelivery.textContent = totalPriceBeforeDiscount + ' тг';
         totalPrice.textContent = totalPriceAfterDiscount + ' тг';
+
+        priceCartPickup.textContent = totalPriceBeforeDiscount + ' тг';
+        totalPricePickUp.textContent = totalPriceAfterDiscountPickup + ' тг';
 
 	},
     deleteGood(id) {
@@ -103,31 +110,4 @@ const cart = {
 	},
 }
 
-document.body.addEventListener('click', event => {
-	const addToCart = event.target.closest('.add-to-cart');
-
-	if (addToCart) {
-		cart.addCartGoods(addToCart.dataset.id)
-	}
-})
 cart.renderCard();
-
-
-cartProductItems.addEventListener('click', event => {
-    const target = event.target;
-    if(target.tagName === "BUTTON") {
-        const id = target.closest('.cart-product-item').dataset.id;
-
-        if (target.classList.contains('cart-btn-delete')) {
-			cart.deleteGood(id);
-		};
-
-		if (target.classList.contains('cart-btn-minus')) {
-			cart.minusGood(id);
-		};
-	
-		if (target.classList.contains('cart-btn-plus')) {
-			cart.plusGood(id);
-		};
-    }
-})

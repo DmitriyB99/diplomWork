@@ -627,7 +627,7 @@ header {
 }
 
 .home-products {
-    padding-top: 24px;
+    padding-top: 42px;
     padding-bottom: 60px;
 
     h3.all_products {
@@ -748,6 +748,43 @@ header {
 
                         input {
                             width: 40%;
+                            text-align: center;
+                            border: none;
+                            background: none;
+                        }
+                    }
+
+                    .input-range-order {
+                        width: 75.57px;
+                        height: 42.47px;
+                        background: #FCFCFC;
+                        border: 0.903636px solid #EBEBEB;
+                        box-sizing: border-box;
+                        border-radius: 9.03636px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        text-align: center;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 12.6509px;
+                        line-height: 42.47px;
+                        color: #000000;
+                        position: relative;
+
+                        &:after {
+                            content: attr(data-desc);
+                            position: absolute;
+                            bottom: -18px;
+                            right: 0;
+                            font-weight: normal;
+                            font-size: 9.03636px;
+                            line-height: 14px;
+                            color: #C6C6C6;
+                        }
+
+                        input {
+                            width: 100%;
                             text-align: center;
                             border: none;
                             background: none;
@@ -1906,7 +1943,7 @@ footer {
                                 display: block;
                                 width: 20%;
                                 height: 100%;
-                                z-index: 10;
+                                z-index: 4;
                                 top: -5%;
                                 right: 0;
                                 background-image: url(../img/arrow-select.svg);
@@ -1926,12 +1963,22 @@ footer {
                                 padding: 0 29px;
                                 font-size: 16px;
                                 line-height: 64px;
-                                color: #c6c6c6;
+                                color: #757575;
                                 margin: 4px 0 18px;
                                 appearance: none;
                                 -webkit-appearance: none;
                                 font-family: inherit;
                                 cursor: pointer;
+
+                                &:focus {
+                                    background: white;
+                                    box-shadow: 0px 0px 6px #00ac4e8a;
+                                    transform: scale(1.025);
+    
+                                    &::placeholder {
+                                        color: #FFFFFF ;
+                                    }
+                                } 
                             }
                         }
 
@@ -1945,8 +1992,18 @@ footer {
                             padding: 0 29px;
                             font-size: 16px;
                             line-height: 64px;
-                            color: #c6c6c6;
                             margin: 4px 0 18px;
+                            color: #757575;
+
+                            &:focus {
+                                background: white;
+                                box-shadow: 0px 0px 6px #00ac4e8a;
+                                transform: scale(1.025);
+
+                                &::placeholder {
+                                    color: #FFFFFF ;
+                                }
+                            }
 
                         }
 
@@ -1961,6 +2018,7 @@ footer {
                                 line-height: 24px;
                                 color: #00ac4e;
                                 margin-bottom: 35px;
+                                cursor: pointer;
                             }
                         }
                     }
@@ -2309,6 +2367,50 @@ footer {
                                         text-align: center;
                                     }
                                 }
+
+                                .input-range-order {
+                                    width: 75.57px;
+                                    height: 42.47px;
+                                    background: #FCFCFC;
+                                    border: 0.903636px solid #EBEBEB;
+                                    box-sizing: border-box;
+                                    border-radius: 9.03636px;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    text-align: center;
+                                    font-style: normal;
+                                    font-weight: normal;
+                                    font-size: 12.6509px;
+                                    line-height: 19px;
+                                    color: #000000;
+                                    position: relative;
+
+                                    &:after {
+                                        content: attr(data-desc);
+                                        position: absolute;
+                                        bottom: -18px;
+                                        right: 0;
+                                        font-weight: normal;
+                                        font-size: 9.03636px;
+                                        line-height: 14px;
+                                        color: #C6C6C6;
+                                    }
+
+                                    input {
+                                        width: 100%;
+                                        text-align: center;
+                                        border: none;
+                                        background: none;
+                                    }
+
+                                    button.cart-btn-minus, .cart-btn-plus {
+                                        width: 30%;
+                                        border: none;
+                                        background: none;
+                                        text-align: center;
+                                    }
+                                } 
                             }
 
                             .cart-product-price {
@@ -3484,11 +3586,6 @@ footer {
         padding: 11px 28px;
     }
 
-    .home-products h3.all_products {
-        margin-bottom: 18px;
-        font-size: 12px; 
-    }
-
     .container {
         width: 320px;
         padding: 0;
@@ -3547,7 +3644,7 @@ footer {
         line-height: 15px;
     }
     
-    .cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items .cart-product-right .cart-product-toggle .input-range {
+    .cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items .cart-product-right .cart-product-toggle .input-range, .input-range-order {
         width: 83px;
         height: 27px;
 
@@ -3769,7 +3866,7 @@ footer {
             padding-left: 20px;
             padding-right: 20px;
             overflow-y: scroll;
-            max-height: 62vh;
+            max-height: 80vh;
             height: auto;
             padding-bottom: 0;
         }
@@ -3941,7 +4038,7 @@ footer {
                 width: 53%;
 
                 .cart-product-toggle {
-                    .input-range {
+                    .input-range, .input-range-order {
                         width: 70px;
                         height: 28px;
                         background: #FCFCFC;

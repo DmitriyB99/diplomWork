@@ -8,11 +8,17 @@ const mySwiper = new Swiper('.swiper-container', {
 
 const menuSwiper = new Swiper('.swiper-container-menu', {
     slidesPerView: 'auto',
-    spaceBetween: 63,    
+    spaceBetween: 0,    
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
-    }
+    },
+	breakpoints: {
+		// when window width is >= 320px
+		768: {
+		  spaceBetween: 63
+		},
+	}
 });
 
 $('.rev-swiper').on('shown.bs.tab', function(e) {
@@ -187,7 +193,7 @@ const createCard = function ({ name, img, description, id, price }) {
     <div class="img">
         <img src="${img}" alt="${name}">
     </div>
-    <a href="" class="title">${name}</a>
+    <a href="../card.html" data-id="${id}" class="title">${name}</a>
     <p class="description">${description}</p>
     <div class="rating">
         <span class="active"></span>
@@ -317,6 +323,7 @@ document.body.addEventListener('click', event => {
 })
 
 cart.renderCard();
+cart.countQuantity();
 
 // cartTableGoods = cartProductItems1
 
