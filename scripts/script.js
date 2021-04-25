@@ -185,7 +185,7 @@ const cart = {
 	},
 }
 
-const createCard = function ({ name, img, description, id, price }) {
+const createCard = function ({ name, img, description, id, price }, item) {
 	const card = document.createElement('div');
 	card.className = 'product';
 
@@ -193,7 +193,7 @@ const createCard = function ({ name, img, description, id, price }) {
     <div class="img">
         <img src="${img}" alt="${name}">
     </div>
-    <a href="card.html" data-id="${id}" class="title">${name}</a>
+    <a href="card.html" data-index="${item}" class="title links">${name}</a>
     <p class="description">${description}</p>
     <div class="rating">
         <span class="active"></span>
@@ -314,6 +314,8 @@ const showAllInstantly = () => {
 }
 showAllInstantly();
 
+
+
 document.body.addEventListener('click', event => {
 	const addToCart = event.target.closest('.add-to-cart');
 
@@ -325,7 +327,16 @@ document.body.addEventListener('click', event => {
 cart.renderCard();
 cart.countQuantity();
 
-// cartTableGoods = cartProductItems1
+// const links = document.querySelectorAll('.links');
+
+// links.forEach(item => {
+// 	item.addEventListener('click', event => {
+// 		event.preventDefault()
+// 		localStorage.setItem('cartBigAsia', event.currentTarget.dataset.index);
+// 		console.log(localStorage.setItem('cartBigAsia', links.currentTarget.dataset.index));
+
+// 	})
+// })
 
 cartProductItems.addEventListener('click', event => {
     const target = event.target;

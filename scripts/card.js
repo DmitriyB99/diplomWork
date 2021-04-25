@@ -42,7 +42,7 @@ const cart = {
 		this.cartGoods.forEach(({ id, name, price, count, img }) => {
 			const divGood = document.createElement('div');
 			divGood.className = 'container';
-			divGood.dataset.id = id;
+			divGood.dataset.inde = id;
 
 			divGood.innerHTML = `
             <div class="card-top">
@@ -301,3 +301,6 @@ cartProductItems.addEventListener('click', event => {
 		};
     }
 })
+
+
+console.log(JSON.parse(localStorage.getItem('cartBigAsia')));
