@@ -11,6 +11,8 @@ $('.rev-swiper').on('shown.bs.tab', function(e) {
 
 
 const cardProduct = document.querySelector('.card-product');
+const url = new URL(window.location);
+const idFromUrl = url.searchParams.get('id');
 
 const checkGoods = () => {
 
@@ -27,19 +29,13 @@ const checkGoods = () => {
 	};
 };
 
-const getGoods = checkGoods();
+// console.log(JSON.stringify(fetch('db/db.json')));
+// const getGoods = checkGoods();
 
 const cart = {
-    cartGoods: JSON.parse(localStorage.getItem('cartBigAsia')) || [],
-	updateLocalStorage() {
-		localStorage.setItem('cartBigAsia', JSON.stringify(this.cartGoods));
-	},
-	getCountCartGoods() {
-		return this.cartGoods.length
-	},
 	renderCard() {
 		cardProduct.textContent = '';
-		this.cartGoods.forEach(({ id, name, price, count, img }) => {
+		getGoods.forEach(({ id, name, price, count, img }) => {
 			const divGood = document.createElement('div');
 			divGood.className = 'container';
 			divGood.dataset.inde = id;
@@ -241,37 +237,16 @@ const cart = {
 		priceCart.textContent = totalPriceBeforeDiscount + ' тг';
         totalPrice.textContent = totalPriceAfterDiscount + ' тг';
 
-	},
-    deleteGood(id) {
-		this.cartGoods = this.cartGoods.filter(item => id !== item.id);
-		this.renderCard();
-		this.updateLocalStorage();
-	},
-	minusGood(id) {
-		for (const item of this.cartGoods) {
-			if (item.id === id) {
-				if (item.count <= 1) {
-					this.deleteGood(id);
-				} else {
-					item.count--;
-				}				
-				break;
-			}
-		}
-		this.updateLocalStorage();
-		this.renderCard();		
-	},
-	plusGood(id) {
-		for (const item of this.cartGoods) {
-			if (item.id === id) {
-				item.count++;
-				break;
-			}
-		}
-		this.updateLocalStorage();
-		this.renderCard();		
-	},
+	}
 }
+// console.log(fetch('db/db.json'));
+// data1.push(result1.json).filter(el => el.id === idFromUrl);
+
+
+
+// console.log(result1.filter(el => el.id === idFromUrl));
+
+
 
 document.body.addEventListener('click', event => {
 	const addToCart = event.target.closest('.add-to-cart');
@@ -280,6 +255,7 @@ document.body.addEventListener('click', event => {
 		cart.addCartGoods(addToCart.dataset.id)
 	}
 })
+
 cart.renderCard();
 
 
@@ -303,4 +279,3 @@ cartProductItems.addEventListener('click', event => {
 })
 
 
-console.log(JSON.parse(localStorage.getItem('cartBigAsia')));

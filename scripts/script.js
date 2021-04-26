@@ -193,7 +193,7 @@ const createCard = function ({ name, img, description, id, price }, item) {
     <div class="img">
         <img src="${img}" alt="${name}">
     </div>
-    <a href="card.html" data-index="${item}" class="title links">${name}</a>
+    <a href="card.html?id=${id}" data-index="${item}" class="title links">${name}</a>
     <p class="description">${description}</p>
     <div class="rating">
         <span class="active"></span>
@@ -327,16 +327,18 @@ document.body.addEventListener('click', event => {
 cart.renderCard();
 cart.countQuantity();
 
-// const links = document.querySelectorAll('.links');
+const links = document.querySelectorAll('.links');
 
-// links.forEach(item => {
-// 	item.addEventListener('click', event => {
-// 		event.preventDefault()
-// 		localStorage.setItem('cartBigAsia', event.currentTarget.dataset.index);
-// 		console.log(localStorage.setItem('cartBigAsia', links.currentTarget.dataset.index));
+links.forEach(item => {
+	item.addEventListener('click', event => {
+		event.preventDefault()
+		localStorage.setItem('cartBigAsia', event.currentTarget.dataset.index);
+		console.log(localStorage.setItem('cartBigAsia', links.currentTarget.dataset.index));
 
-// 	})
-// })
+	})
+})
+
+console.log(links);
 
 cartProductItems.addEventListener('click', event => {
     const target = event.target;
