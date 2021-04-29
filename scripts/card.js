@@ -13,34 +13,29 @@ $('.rev-swiper').on('shown.bs.tab', function(e) {
 const cardProduct = document.querySelector('.card-product');
 const url = new URL(window.location);
 const idFromUrl = url.searchParams.get('id');
+const payPopup = document.querySelector('.pay-popup');
 
-const checkGoods = () => {
+console.log(payPopup);
 
-	const data = [];
-
-	return async () => { 
-		if (data.length) return data;
-		const result = await fetch('db/db.json');
-		if (!result.ok) {
-			throw 'Ошибка' + result.status
-		} 
-		data.push(...(await result.json()));
-		return data
-	};
+const checkGoods = async () => {
+    const data = [];
+    if (data.length) return data;
+    const result = await fetch("db/db.json");
+    if (!result.ok) {
+        throw "Ошибка" + result.status;
+    }
+    return await result.json();
 };
 
-// console.log(JSON.stringify(fetch('db/db.json')));
-// const getGoods = checkGoods();
 
-const cart = {
-	renderCard() {
-		cardProduct.textContent = '';
-		getGoods.forEach(({ id, name, price, count, img }) => {
-			const divGood = document.createElement('div');
-			divGood.className = 'container';
-			divGood.dataset.inde = id;
 
-			divGood.innerHTML = `
+
+const renderCardProduct = ({ id, name, price, count, img, description }) => {
+    cardProduct.textContent = '';
+    const divGood = document.createElement('div');
+	divGood.className = 'container';
+
+    divGood.innerHTML = `
             <div class="card-top">
             <div class="card-img">
                 <img src="${img}" alt="${name}">
@@ -62,18 +57,16 @@ const cart = {
                 </div>
                 <div class="w50">
                     <div class="price">
-                        <span>Цена за уп.</span> <b>${price} тг</b>
+                        <span>Цена</span> <b>${price} тг</b>
                     </div>
-                    <div class="price">
-                        <span>Кол-во шт в упаковке</span> <b>20 шт.</b>
-                    </div>
+
                     <div class="price">
                         <span>Количество</span>
 
                         <div class="input_range" data-desc="Ед. изм.: упаковка">
-                            <button class="cart-btn-minus">-</button>
-                            <input type="text" maxlength="12" value="${count}" />
-                            <button class="cart-btn-plus">+</button>
+                        <button class="cart-btn-minus">-</button>
+                        <input type="text" maxlength="12" value="1" />
+                        <button class="cart-btn-plus">+</button>
                         </div>
 
                     </div>
@@ -81,7 +74,7 @@ const cart = {
                 <div class="pay-bottom">
                     <div class="to-pay">
                         <span>Итого к оплате</span>
-                        <b>5 000 тг</b>
+                        <b class="total-price">${price}</b>
                     </div>
                     <div class="pay-block">
                         <button class="pay-popup">Купить</button>
@@ -110,11 +103,7 @@ const cart = {
                 <div class="tab-content">
                     <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="about_product">
                         <h2 class="tab">Описание</h2>
-                        <p>Полутвердый пластичный однородный сыр, слегка ломкий на изгибе. Пажитник придает легкое ореховое послевкусие. В Италии считается столовым сыром, который подходит к любому времени суток и к любому блюду и к вину</p>
-
-                        <p>Вес головки 500 г. +/-10%. Цена за 1 кг.</p> 
-
-                        <p>Продукция компании Alpenville изготовлена преимущественно из Шарангского молока</p>
+                        <p>${description}</p> 
                     </div>
                     <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="product_parametr">
                         <ul class="product_ul">
@@ -222,23 +211,19 @@ const cart = {
                 </div>
             </div>
         </div>
-			`;
-			cardProduct.append(divGood);
-		});
-		
-		const totalPriceBeforeDiscount = this.cartGoods.reduce((sum, item) => {
-			return sum + item.price * item.count;
-		}, 0);
+	`;
+	cardProduct.append(divGood);
 
-        const totalPriceAfterDiscount = this.cartGoods.reduce(() => {
-            return totalPriceBeforeDiscount + +discount.textContent;
-        }, 0)
-
-		priceCart.textContent = totalPriceBeforeDiscount + ' тг';
-        totalPrice.textContent = totalPriceAfterDiscount + ' тг';
-
-	}
 }
+const goods = checkGoods();
+goods.then((r) => {
+    const item = r.find((el) => el.id === idFromUrl);
+renderCardProduct(item)
+});
+// console.log(JSON.stringify(fetch('db/db.json')));
+// const getGoods = checkGoods();
+
+
 // console.log(fetch('db/db.json'));
 // data1.push(result1.json).filter(el => el.id === idFromUrl);
 
@@ -248,34 +233,33 @@ const cart = {
 
 
 
-document.body.addEventListener('click', event => {
-	const addToCart = event.target.closest('.add-to-cart');
+// document.body.addEventListener('click', event => {
+// 	const addToCart = event.target.closest('.add-to-cart');
 
-	if (addToCart) {
-		cart.addCartGoods(addToCart.dataset.id)
-	}
-})
-
-cart.renderCard();
+// 	if (addToCart) {
+// 		cart.addCartGoods(addToCart.dataset.id)
+// 	}
+// })
 
 
-cartProductItems.addEventListener('click', event => {
-    const target = event.target;
-    if(target.tagName === "BUTTON") {
-        const id = target.closest('.cart-product-item').dataset.id;
 
-        if (target.classList.contains('cart-btn-delete')) {
-			cart.deleteGood(id);
-		};
+// cartProductItems.addEventListener('click', event => {
+//     const target = event.target;
+//     if(target.tagName === "BUTTON") {
+//         const id = target.closest('.cart-product-item').dataset.id;
 
-		if (target.classList.contains('cart-btn-minus')) {
-			cart.minusGood(id);
-		};
+//         if (target.classList.contains('cart-btn-delete')) {
+// 			cart.deleteGood(id);
+// 		};
+
+// 		if (target.classList.contains('cart-btn-minus')) {
+// 			cart.minusGood(id);
+// 		};
 	
-		if (target.classList.contains('cart-btn-plus')) {
-			cart.plusGood(id);
-		};
-    }
-})
+// 		if (target.classList.contains('cart-btn-plus')) {
+// 			cart.plusGood(id);
+// 		};
+//     }
+// })
 
 

@@ -185,7 +185,7 @@ const cart = {
 	},
 }
 
-const createCard = function ({ name, img, description, id, price }, item) {
+const createCard = function ({ name, img, description, id, price }) {
 	const card = document.createElement('div');
 	card.className = 'product';
 
@@ -193,7 +193,7 @@ const createCard = function ({ name, img, description, id, price }, item) {
     <div class="img">
         <img src="${img}" alt="${name}">
     </div>
-    <a href="card.html?id=${id}" data-index="${item}" class="title links">${name}</a>
+    <a href="card.html?id=${id}" class="title links">${name}</a>
     <p class="description">${description}</p>
     <div class="rating">
         <span class="active"></span>
