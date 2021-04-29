@@ -341,9 +341,33 @@ cartProductItems.addEventListener('click', event => {
     }
 });
 
+////////////////////////  mobile cart open
+
+const cartMob = document.querySelector('.cart-mob');
+const cartPopup = document.querySelector('.cart-popup');
+const closePopup = document.querySelector('.close-cart-popup');
+const navbarToggler = document.querySelector('.navbar-toggler');
+const lol = document.querySelector('.lol');
+
+
+cartMob.addEventListener('click', () => {
+	cartPopup.classList.toggle('active');
+	document.body.classList.toggle('modal-open');
+	lol.classList.toggle('active');
+	cart.renderCard();
+})
+
+closePopup.addEventListener('click', () => {
+	cartPopup.classList.remove('active');
+	document.body.classList.remove('modal-open');
+	lol.classList.remove('active');
+})
+
+navbarToggler.addEventListener('click', () => navbarToggler.classList.toggle('change-button'));
+
+
+
 
 cart.renderCard();
 cart.countQuantity();
 showAllInstantly();
-
-

@@ -158,3 +158,4 @@ cartProductItems.addEventListener('click', event => {
 });
 
 cart.renderCard();
+cart.countQuantity();

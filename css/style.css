@@ -3150,6 +3150,9 @@ footer .footer-wrapper .footer-right .person button img {
     position: absolute;
     top: -20px;
     right: -19px;
+    cursor: pointer;
+    color: white;
+    font-weight: 400;
   }
   .cart-popup.active {
     display: block !important;
@@ -3474,7 +3477,7 @@ footer .footer-wrapper .footer-right .person button img {
     border-radius: 52px;
     padding: 0 35px;
     align-items: center;
-    z-index: 5;
+    z-index: 11;
   }
   .mobile-bottom-menu a,
   .mobile-bottom-menu span {
@@ -3504,4 +3507,17 @@ footer .footer-wrapper .footer-right .person button img {
 .mobile-bottom-menu,
 .cart-popup {
   display: none;
+}
+.lol {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+}
+.lol.active {
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
 }
