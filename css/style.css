@@ -1079,7 +1079,8 @@ footer .footer-wrapper .footer-right .person button img {
 }
 .card-product .card-top .card-sidebar .pay-block {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  padding-top: 20px;
 }
 .card-product .card-top .card-sidebar .pay-block .cart-add {
   border: none;
@@ -2410,6 +2411,9 @@ footer .footer-wrapper .footer-right .person button img {
   }
 }
 @media (max-width: 767px) {
+  .card-product .card-top .card-sidebar .pay-block {
+    padding-top: 0;
+  }
   .home-banner {
     padding-top: 75px;
   }

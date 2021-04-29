@@ -14,23 +14,12 @@ const menuSwiper = new Swiper('.swiper-container-menu', {
         prevEl: '.swiper-button-prev',
     },
 	breakpoints: {
-		// when window width is >= 320px
 		768: {
-		  spaceBetween: 63
+		    spaceBetween: 63
 		},
 	}
 });
 
-$('.rev-swiper').on('shown.bs.tab', function(e) {
-    const swiperReviews = new Swiper('.slider-reviews', {
-        slidesPerView: 2,
-        spaceBetween: 16,
-        
-        navigation: {
-            nextEl: '.swiper-button-next',
-        },
-    });
-});
 
 const longGoodsList = document.querySelector('.long-goods-list');
 const viewAll = document.querySelectorAll('.view-all');
@@ -50,6 +39,8 @@ const cartCount = document.querySelector('.cart-mob');
 const priceCart = document.querySelector('.price-cart');
 const totalPrice = document.querySelector('.total-price');
 const discount = document.querySelector('.discount');
+const links = document.querySelectorAll('.links');
+
 
 
 const checkGoods = () => {
@@ -243,7 +234,6 @@ const filterCards = function (field, value) {
 		.then(renderCards);
 };
 
-
 categoriesNav.forEach(link => {
 	link.addEventListener('click', event => {
 		event.preventDefault();
@@ -312,9 +302,6 @@ showSpice.forEach(item => {
 const showAllInstantly = () => {
 	getGoods().then(renderCards);
 }
-showAllInstantly();
-
-
 
 document.body.addEventListener('click', event => {
 	const addToCart = event.target.closest('.add-to-cart');
@@ -324,10 +311,7 @@ document.body.addEventListener('click', event => {
 	}
 })
 
-cart.renderCard();
-cart.countQuantity();
 
-const links = document.querySelectorAll('.links');
 
 links.forEach(item => {
 	item.addEventListener('click', event => {
@@ -337,8 +321,6 @@ links.forEach(item => {
 
 	})
 })
-
-console.log(links);
 
 cartProductItems.addEventListener('click', event => {
     const target = event.target;
@@ -357,4 +339,11 @@ cartProductItems.addEventListener('click', event => {
 			cart.plusGood(id);
 		};
     }
-})
+});
+
+
+cart.renderCard();
+cart.countQuantity();
+showAllInstantly();
+
+

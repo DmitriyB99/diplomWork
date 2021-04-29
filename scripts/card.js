@@ -13,9 +13,7 @@ $('.rev-swiper').on('shown.bs.tab', function(e) {
 const cardProduct = document.querySelector('.card-product');
 const url = new URL(window.location);
 const idFromUrl = url.searchParams.get('id');
-const payPopup = document.querySelector('.pay-popup');
-
-console.log(payPopup);
+const cardSidebar = document.querySelector('.card-sidebar');
 
 const checkGoods = async () => {
     const data = [];
@@ -27,8 +25,69 @@ const checkGoods = async () => {
     return await result.json();
 };
 
+const getGoods = checkGoods();
+
+setTimeout(() => {    
+    document.body.addEventListener('click', event => {
+        const addToCart = event.target.closest('.pay-popup');
+        if (addToCart) {
+            cart.addCartGoods(addToCart.dataset.id);
+        }
+    });
+}, 1000);
 
 
+
+const cart = {
+	cartGoods: JSON.parse(localStorage.getItem('cartBigAsia')) || [],
+	updateLocalStorage() {
+		localStorage.setItem('cartBigAsia', JSON.stringify(this.cartGoods));
+	},
+	getCountCartGoods() {
+		return this.cartGoods.length
+	},    
+	minusGood(id) {
+		for (const item of this.cartGoods) {
+			if (item.id === id) {
+				if (item.count <= 1) {
+					this.deleteGood(id);
+				} else {
+					item.count--;
+				}				
+				break;
+			}
+		}
+		this.updateLocalStorage();
+	},
+	plusGood(id) {
+		for (const item of this.cartGoods) {
+			if (item.id === id) {
+				item.count++;
+				break;
+			}
+		}
+		this.updateLocalStorage();
+	},
+	addCartGoods(id){
+		const goodItem = this.cartGoods.find(item => item.id === id);
+		if (goodItem) {
+			this.plusGood(id);
+		} else {
+			getGoods.then(data => data.find(item => item.id === id))
+				.then(({ id, name, price, img }) => {
+					this.cartGoods.push({
+						id,
+						name,
+						price,
+						img,
+						count: 1
+					});
+					this.updateLocalStorage();
+				});
+		}
+		
+	},
+}
 
 const renderCardProduct = ({ id, name, price, count, img, description }) => {
     cardProduct.textContent = '';
@@ -77,8 +136,7 @@ const renderCardProduct = ({ id, name, price, count, img, description }) => {
                         <b class="total-price">${price}</b>
                     </div>
                     <div class="pay-block">
-                        <button class="pay-popup">Купить</button>
-                        <button class="cart-add"></button>
+                        <button class="pay-popup" data-id="${id}">Купить</button>
                     </div>
                 </div>
             </div>
@@ -215,51 +273,9 @@ const renderCardProduct = ({ id, name, price, count, img, description }) => {
 	cardProduct.append(divGood);
 
 }
+
 const goods = checkGoods();
 goods.then((r) => {
     const item = r.find((el) => el.id === idFromUrl);
-renderCardProduct(item)
+    renderCardProduct(item)
 });
-// console.log(JSON.stringify(fetch('db/db.json')));
-// const getGoods = checkGoods();
-
-
-// console.log(fetch('db/db.json'));
-// data1.push(result1.json).filter(el => el.id === idFromUrl);
-
-
-
-// console.log(result1.filter(el => el.id === idFromUrl));
-
-
-
-// document.body.addEventListener('click', event => {
-// 	const addToCart = event.target.closest('.add-to-cart');
-
-// 	if (addToCart) {
-// 		cart.addCartGoods(addToCart.dataset.id)
-// 	}
-// })
-
-
-
-// cartProductItems.addEventListener('click', event => {
-//     const target = event.target;
-//     if(target.tagName === "BUTTON") {
-//         const id = target.closest('.cart-product-item').dataset.id;
-
-//         if (target.classList.contains('cart-btn-delete')) {
-// 			cart.deleteGood(id);
-// 		};
-
-// 		if (target.classList.contains('cart-btn-minus')) {
-// 			cart.minusGood(id);
-// 		};
-	
-// 		if (target.classList.contains('cart-btn-plus')) {
-// 			cart.plusGood(id);
-// 		};
-//     }
-// })
-
-
