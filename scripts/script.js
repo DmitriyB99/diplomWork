@@ -311,8 +311,8 @@ document.body.addEventListener('click', event => {
 
 	if (addToCart) {
 		cart.addCartGoods(addToCart.dataset.id)
-		addToCart.style.cssText = "border: 1px solid #00AC4E; background: #dadac87d; color: #00AC4E;";
-		addToCart.textContent = 'Добавлено';
+		addToCart.style.cssText = "background: rgb(11 162 93); color: #FFFFFF";
+		addToCart.textContent = '✔ Добавлено';
 	}
 })
 
@@ -352,21 +352,27 @@ const cartMob = document.querySelector('.cart-mob');
 const cartPopup = document.querySelector('.cart-popup');
 const closePopup = document.querySelector('.close-cart-popup');
 const navbarToggler = document.querySelector('.navbar-toggler');
-const lol = document.querySelector('.lol');
+const blur = document.querySelector('.blur');
 
 
 cartMob.addEventListener('click', () => {
 	cartPopup.classList.toggle('active');
 	document.body.classList.toggle('modal-open');
-	lol.classList.toggle('active');
+	blur.classList.toggle('active');
 	cart.renderCard();
-})
+});
 
 closePopup.addEventListener('click', () => {
 	cartPopup.classList.remove('active');
 	document.body.classList.remove('modal-open');
-	lol.classList.remove('active');
-})
+	blur.classList.remove('active');
+});
+
+blur.addEventListener('click', () => {
+	blur.classList.remove('active');
+	cartPopup.classList.remove('active');
+	document.body.classList.remove('modal-open');
+});
 
 navbarToggler.addEventListener('click', () => navbarToggler.classList.toggle('change-button'));
 
@@ -376,3 +382,5 @@ navbarToggler.addEventListener('click', () => navbarToggler.classList.toggle('ch
 cart.renderCard();
 cart.countQuantity();
 showAllInstantly();
+
+

@@ -395,7 +395,15 @@ header .menu-right .menu-contact a {
 header .menu-right .menu-contact a img {
   margin-right: 5px;
 }
-header .menu-right .menu-user a,
+header .menu-right .menu-user a {
+  margin-left: 30px;
+}
+header .menu-right .menu-user a:before {
+  background: red;
+  height: 30px;
+  width: 30px;
+  content: '312';
+}
 header .menu-right .menu-user button {
   margin-left: 30px;
 }
@@ -671,6 +679,9 @@ header .menu-right .menu-user button {
 .home-products .products-wrapper .product button.add-to-cart:hover {
   text-decoration: none;
   background: #037b39;
+}
+.home-products .products-wrapper .product button.add-to-cart:active {
+  transform: scale(0.9);
 }
 .home-products .pagination-block {
   display: flex;
@@ -3152,7 +3163,7 @@ footer .footer-wrapper .footer-right .person button img {
     transform: translateX(-50%);
     width: 0;
     bottom: 40px;
-    z-index: 4;
+    z-index: 11;
     max-height: 80vh;
     display: none;
   }
@@ -3494,7 +3505,7 @@ footer .footer-wrapper .footer-right .person button img {
     border-radius: 52px;
     padding: 0 35px;
     align-items: center;
-    z-index: 11;
+    z-index: 12;
   }
   .mobile-bottom-menu a,
   .mobile-bottom-menu span {
@@ -3525,7 +3536,7 @@ footer .footer-wrapper .footer-right .person button img {
 .cart-popup {
   display: none;
 }
-.lol {
+.blur {
   position: fixed;
   top: 0;
   left: 0;
@@ -3535,7 +3546,7 @@ footer .footer-wrapper .footer-right .person button img {
   outline: 0;
   display: none;
 }
-.lol.active {
+.blur.active {
   z-index: 10;
   display: block;
   background-color: rgba(0, 0, 0, 0.5);
