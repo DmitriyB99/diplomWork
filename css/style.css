@@ -395,15 +395,7 @@ header .menu-right .menu-contact a {
 header .menu-right .menu-contact a img {
   margin-right: 5px;
 }
-header .menu-right .menu-user a {
-  margin-left: 30px;
-}
-header .menu-right .menu-user a:before {
-  background: red;
-  height: 30px;
-  width: 30px;
-  content: '312';
-}
+header .menu-right .menu-user a,
 header .menu-right .menu-user button {
   margin-left: 30px;
 }
@@ -1349,6 +1341,7 @@ footer .footer-wrapper .footer-right .person button img {
   background: #00AC4E;
   border-radius: 3px;
   height: 100%;
+  max-width: 100%;
 }
 .card-product .card-bottom .card-sidebar .range-slide .range-line .round {
   width: 12px;
@@ -1784,6 +1777,7 @@ footer .footer-wrapper .footer-right .person button img {
   background: #00ac4e;
   border-radius: 3px;
   height: 100%;
+  max-width: 100%;
 }
 .cart-product.cart-product_order .cart-wrapper .cart-info .cart-bottom .cart-sidebar-bottom .range-slide .range-line .round {
   width: 12px;
@@ -3466,6 +3460,7 @@ footer .footer-wrapper .footer-right .person button img {
     background: #00ac4e;
     border-radius: 3px;
     height: 100%;
+    max-width: 100%;
   }
   .cart-popup .cart-sidebar-bottom .range-slide .range-line .round {
     width: 12px;

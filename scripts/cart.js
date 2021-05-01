@@ -2,6 +2,9 @@ const cartProductItems = document.querySelectorAll('.cart-product-items')[1];
 const priceCart = document.querySelector('.price-cart');
 const totalPrice = document.querySelector('.total-price');
 const discount = document.querySelector('.discount');
+const greenLine = document.querySelectorAll('.green-line')[1];
+const greenLineMobile = document.querySelector('.green-line');
+
 
 
 
@@ -74,6 +77,8 @@ const cart = {
 
 		priceCart.textContent = totalPriceBeforeDiscount + ' тг';
         totalPrice.textContent = totalPriceAfterDiscount + ' тг';
+		greenLine.style.width = (totalPriceBeforeDiscount*100/15000) + '%';
+		greenLineMobile.style.width = (totalPriceBeforeDiscount*100/15000) + '%';
 
 	},
     deleteGood(id) {

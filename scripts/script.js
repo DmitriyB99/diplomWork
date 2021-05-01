@@ -40,6 +40,7 @@ const priceCart = document.querySelector('.price-cart');
 const totalPrice = document.querySelector('.total-price');
 const discount = document.querySelector('.discount');
 const links = document.querySelectorAll('.links');
+const greenLine = document.querySelector('.green-line');
 
 
 
@@ -122,6 +123,8 @@ const cart = {
 
 		priceCart.textContent = totalPriceBeforeDiscount + ' тг';
         totalPrice.textContent = totalPriceAfterDiscount + ' тг';
+		greenLine.style.width = (totalPriceBeforeDiscount*100/15000) + '%';
+
 
 	},
 	deleteGood(id) {
@@ -376,11 +379,14 @@ blur.addEventListener('click', () => {
 
 navbarToggler.addEventListener('click', () => navbarToggler.classList.toggle('change-button'));
 
+////////////////////////  progress bar
 
 
+
+// var something = priceCart;
+// var total = 15000;
+// var percent = something*100/total
 
 cart.renderCard();
 cart.countQuantity();
 showAllInstantly();
-
-
