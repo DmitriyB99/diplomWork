@@ -826,9 +826,9 @@ header {
 
                 &:hover {
                     text-decoration: none;
+                    background: #037b39;
                 }
-
-            }
+            } 
             
         }
     }
@@ -1338,6 +1338,10 @@ footer {
                     line-height: 23px;
                     color: #FFFFFF;
                     border: none;
+
+                    &:hover {
+                        background: #037b39;
+                    } 
                 }
             }
         }
@@ -1371,6 +1375,7 @@ footer {
                         line-height: 19px;
                         color: #00AC4E;
                     }
+                    
                 }
             }
 
@@ -2280,6 +2285,14 @@ footer {
                         justify-content: space-between;
                         flex-direction: column;
                         border-bottom: 0.701612px solid #EBEBEB;
+
+                        p {
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 22px;
+                            line-height: 26px;
+                            color: #828282;
+                        }
 
 
                         .cart-product-item {
@@ -4030,6 +4043,13 @@ footer {
             flex-direction: column;
             border-bottom: 0.701612px solid #EBEBEB;
 
+            p {
+                padding-top: 15px;
+                font-size: 16px;
+                line-height: 26px;
+                color: #828282;
+            }
+
 
             .cart-product-item {
                 border-bottom: 0.701612px solid #EBEBEB;
@@ -4309,9 +4329,11 @@ footer {
     height: 100%;
     overflow: hidden;
     outline: 0;
+    display: none;
 
     &.active {
         z-index: 10;
+        display: block;
         background-color: rgba(0, 0, 0, 0.5);
     }
 }

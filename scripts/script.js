@@ -82,6 +82,9 @@ const cart = {
 	},
 	renderCard() {
 		cartProductItems.textContent = '';
+		if (this.cartGoods.length === 0) {
+			cartProductItems.innerHTML = `<p>Ваша Корзина пуста</p>`;
+		}
 		this.cartGoods.forEach(({ id, name, price, count, img }) => {
 			const divGood = document.createElement('div');
 			divGood.className = 'cart-product-item';
@@ -308,6 +311,8 @@ document.body.addEventListener('click', event => {
 
 	if (addToCart) {
 		cart.addCartGoods(addToCart.dataset.id)
+		addToCart.style.cssText = "border: 1px solid #00AC4E; background: #dadac87d; color: #00AC4E;";
+		addToCart.textContent = 'Добавлено';
 	}
 })
 

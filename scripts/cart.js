@@ -33,12 +33,14 @@ const cart = {
 	},
 	renderCard() {
 		cartProductItems.textContent = '';
+		if (this.cartGoods.length === 0) {
+			cartProductItems.innerHTML = `<p>Ваша Корзина пуста</p>`;
+		}
 		this.cartGoods.forEach(({ id, name, price, count, img }) => {
 			const divGood = document.createElement('div');
 			divGood.className = 'cart-product-item';
 			divGood.dataset.id = id;
-
-			divGood.innerHTML = `
+				divGood.innerHTML = ` 
 				<div class="cart-product-left d-flex">
 					<button class="cart-btn-delete">x</button>
 					<div class="cart-product-img">
@@ -57,6 +59,8 @@ const cart = {
 					<div class="cart-product-price">${price} тг</div>
 				</div>
 			`;
+			
+			
 			cartProductItems.append(divGood);
 		});
 		

@@ -670,6 +670,7 @@ header .menu-right .menu-user button {
 }
 .home-products .products-wrapper .product button.add-to-cart:hover {
   text-decoration: none;
+  background: #037b39;
 }
 .home-products .pagination-block {
   display: flex;
@@ -1105,6 +1106,9 @@ footer .footer-wrapper .footer-right .person button img {
   line-height: 23px;
   color: #FFFFFF;
   border: none;
+}
+.card-product .card-top .card-sidebar .pay-block .pay-popup:hover {
+  background: #037b39;
 }
 .card-product .card-bottom {
   margin-top: 60px;
@@ -1888,6 +1892,13 @@ footer .footer-wrapper .footer-right .person button img {
   justify-content: space-between;
   flex-direction: column;
   border-bottom: 0.701612px solid #EBEBEB;
+}
+.cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 26px;
+  color: #828282;
 }
 .cart-product.cart-product_order .cart-wrapper .cart-info .cart-top .cart-product-items .cart-product-item {
   border-bottom: 0.701612px solid #EBEBEB;
@@ -3272,6 +3283,12 @@ footer .footer-wrapper .footer-right .person button img {
     flex-direction: column;
     border-bottom: 0.701612px solid #EBEBEB;
   }
+  .cart-popup .cart-product-items p {
+    padding-top: 15px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #828282;
+  }
   .cart-popup .cart-product-items .cart-product-item {
     border-bottom: 0.701612px solid #EBEBEB;
     padding: 12px 0;
@@ -3516,8 +3533,10 @@ footer .footer-wrapper .footer-right .person button img {
   height: 100%;
   overflow: hidden;
   outline: 0;
+  display: none;
 }
 .lol.active {
   z-index: 10;
+  display: block;
   background-color: rgba(0, 0, 0, 0.5);
 }
