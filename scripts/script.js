@@ -315,7 +315,7 @@ document.body.addEventListener('click', event => {
 	if (addToCart) {
 		cart.addCartGoods(addToCart.dataset.id)
 		addToCart.style.cssText = "background: rgb(11 162 93); color: #FFFFFF";
-		addToCart.textContent = '✔ Добавлено';
+		addToCart.textContent = 'Добавлено';
 	}
 })
 
