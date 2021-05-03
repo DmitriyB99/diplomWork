@@ -111,11 +111,18 @@ const cart = {
 				</div>
 			`;
 			cartProductItems.append(divGood);
+			
 		});
 		
 		const totalPriceBeforeDiscount = this.cartGoods.reduce((sum, item) => {
 			return sum + item.price * item.count;
 		}, 0);
+
+		if (totalPriceBeforeDiscount >= 15000) {
+			discount.textContent = 0;
+		} else {
+			discount.textContent = 1000;
+		}
 
         const totalPriceAfterDiscount = this.cartGoods.reduce(() => {
             return totalPriceBeforeDiscount + +discount.textContent;
@@ -356,9 +363,11 @@ const cartPopup = document.querySelector('.cart-popup');
 const closePopup = document.querySelector('.close-cart-popup');
 const navbarToggler = document.querySelector('.navbar-toggler');
 const blur = document.querySelector('.blur');
-
+const homeMobile = document.querySelector('.home-mobile');
 
 cartMob.addEventListener('click', () => {
+	homeMobile.classList.toggle('active');
+	cartMob.classList.toggle('active');
 	cartPopup.classList.toggle('active');
 	document.body.classList.toggle('modal-open');
 	blur.classList.toggle('active');
@@ -366,12 +375,16 @@ cartMob.addEventListener('click', () => {
 });
 
 closePopup.addEventListener('click', () => {
+	homeMobile.classList.add('active');
+	cartMob.classList.remove('active');
 	cartPopup.classList.remove('active');
 	document.body.classList.remove('modal-open');
 	blur.classList.remove('active');
 });
 
 blur.addEventListener('click', () => {
+	homeMobile.classList.add('active');
+	cartMob.classList.remove('active');
 	blur.classList.remove('active');
 	cartPopup.classList.remove('active');
 	document.body.classList.remove('modal-open');
@@ -381,6 +394,13 @@ navbarToggler.addEventListener('click', () => navbarToggler.classList.toggle('ch
 
 ////////////////////////  progress bar
 
+/* width: 37px;
+    height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 50%; */
 
 
 // var something = priceCart;
@@ -390,3 +410,4 @@ navbarToggler.addEventListener('click', () => navbarToggler.classList.toggle('ch
 cart.renderCard();
 cart.countQuantity();
 showAllInstantly();
+
