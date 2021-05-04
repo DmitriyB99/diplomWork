@@ -122,7 +122,7 @@ const renderCardProduct = ({ id, name, price, count, img, description }) => {
                     <div class="price">
                         <span>Количество</span>
 
-                        <div class="input_range" data-desc="Ед. изм.: упаковка">
+                        <div class="input_range" data-desc="Ед. изм.: кг">
                         <button class="cart-btn-minus">-</button>
                         <input type="text" maxlength="12" value="1" />
                         <button class="cart-btn-plus">+</button>

@@ -101,7 +101,7 @@ const cart = {
 				</div>
 				<div class="cart-product-right d-flex">
 					<div class="cart-product-toggle">
-						<div class="input-range" data-desc="Ед. изм.: упаковка">
+						<div class="input-range" data-desc="Ед. изм.: кг">
 							<button class="cart-btn-minus">-</button>
 							<input type="text" maxlength="12" value="${count}" />
 							<button class="cart-btn-plus">+</button>
@@ -207,9 +207,10 @@ const createCard = function ({ name, img, description, id, price }) {
         <span></span>                                    
     </div>
     <div class="price">
-        <b>${price} тг/кг</b> <span>За 500гр.</span>
+        <b>${price} тг/кг</b>
     </div>
     <button class="add-to-cart" data-id="${id}">В корзину</button>
+	
 	`;
 	return card;
 };
@@ -391,21 +392,6 @@ blur.addEventListener('click', () => {
 });
 
 navbarToggler.addEventListener('click', () => navbarToggler.classList.toggle('change-button'));
-
-////////////////////////  progress bar
-
-/* width: 37px;
-    height: 37px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    border-radius: 50%; */
-
-
-// var something = priceCart;
-// var total = 15000;
-// var percent = something*100/total
 
 cart.renderCard();
 cart.countQuantity();

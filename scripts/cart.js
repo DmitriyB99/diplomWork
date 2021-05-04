@@ -1,11 +1,10 @@
-const cartProductItems = document.querySelectorAll('.cart-product-items')[1];
+const cartProductItems = document.querySelector('.cart-product-items');
 const priceCart = document.querySelector('.price-cart');
 const totalPrice = document.querySelector('.total-price');
 const discount = document.querySelector('.discount');
-const greenLine = document.querySelectorAll('.green-line')[1];
-const greenLineMobile = document.querySelector('.green-line');
+const greenLine = document.querySelector('.green-line');
 
-
+console.log(priceCart);
 
 
 
@@ -53,9 +52,9 @@ const cart = {
 				</div>
 				<div class="cart-product-right d-flex">
 					<div class="cart-product-toggle">
-						<div class="input-range" data-desc="Ед. изм.: упаковка">
+						<div class="input-range" data-desc="Ед. изм.: кг">
 							<button class="cart-btn-minus">-</button>
-							<input type="text" maxlength="12" value="${count}" />
+							<input class="input" type="text" maxlength="12" value="${count}" />
 							<button class="cart-btn-plus">+</button>
 						</div>
 					</div>
@@ -65,20 +64,29 @@ const cart = {
 			
 			
 			cartProductItems.append(divGood);
+			
+			
 		});
 		
 		const totalPriceBeforeDiscount = this.cartGoods.reduce((sum, item) => {
 			return sum + item.price * item.count;
 		}, 0);
 
+		if (totalPriceBeforeDiscount >= 15000) {
+			discount.textContent = 0;
+		} else {
+			discount.textContent = 1000;
+		}
+
         const totalPriceAfterDiscount = this.cartGoods.reduce(() => {
             return totalPriceBeforeDiscount + +discount.textContent;
-        }, 0)
+        }, 0);
+
+		
 
 		priceCart.textContent = totalPriceBeforeDiscount + ' тг';
         totalPrice.textContent = totalPriceAfterDiscount + ' тг';
 		greenLine.style.width = (totalPriceBeforeDiscount*100/15000) + '%';
-		greenLineMobile.style.width = (totalPriceBeforeDiscount*100/15000) + '%';
 
 	},
     deleteGood(id) {
@@ -110,6 +118,16 @@ const cart = {
 		this.updateLocalStorage();
 		this.renderCard();		
 	},
+	inputGood(id) {
+		for (const item of this.cartGoods) {
+			if (item.id === id) {
+				const itemValue = document.querySelector('input')
+				item.count = itemValue.value
+			}
+		}
+		this.updateLocalStorage();
+		this.renderCard();	
+	}
 }
 
 document.body.addEventListener('click', event => {
@@ -139,4 +157,15 @@ cartProductItems.addEventListener('click', event => {
 			cart.plusGood(id);
 		};
     }
+})
+
+cartProductItems.addEventListener('input', event => {
+	const target = event.target;
+    if(target.tagName === "INPUT") {
+        const id = target.closest('.cart-product-item').dataset.id;
+
+        if (target.classList.contains('input')) {
+			cart.inputGood(id);
+		};
+    } 
 })

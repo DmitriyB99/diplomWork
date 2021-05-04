@@ -50,7 +50,7 @@ const cart = {
 				</div>
 				<div class="cart-product-right d-flex">
 					<div class="cart-product-toggle">
-						<div class="input-range-order" data-desc="Ед. изм.: упаковка">
+						<div class="input-range-order" data-desc="Ед. изм.: кг">
 							<input type="text" maxlength="12" value="${count}" disabled />
 						</div>
 					</div>

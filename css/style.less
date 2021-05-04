@@ -509,8 +509,7 @@ header {
             }
         }
         
-        .menu-user {
-            
+        .menu-user {            
             a,
             button {
                 margin-left: 30px;
@@ -2461,7 +2460,7 @@ footer {
             }
 
             .cart-sidebar-right {
-                width: auto;
+                width: 33%;
 
                 form {
                     display: flex;
@@ -2951,6 +2950,12 @@ footer {
 
 
 @media (max-width: 767px) {
+    .menu-user {
+        .cart {
+            display: none;
+        }
+    }
+
     .card-product .card-top .card-sidebar .pay-block {
         padding-top: 0;
     }
@@ -3046,7 +3051,7 @@ footer {
                     }
                     
                     .profile {
-                        margin: 0 20px;
+                        margin: 0 0 0 20px;
                     }
                 }
 
@@ -4397,4 +4402,16 @@ footer {
         display: block;
         background-color: rgba(0, 0, 0, 0.5);
     }
+}
+
+.home-products .products-wrapper .product .cart-add a.to-cart {
+    border: none;
+    width: 49px;
+    height: 40px;
+    background-color: #00AC4E;
+    background-image: url(../img/card/shopping-cart.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+    margin-left: 30px;
 }
