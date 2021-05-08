@@ -1952,6 +1952,23 @@ footer {
                 width: 452px;
                 margin-left: 35px;
 
+                .delivery-btn {
+                    display: none;
+                    
+                    &.active {
+                        display: block;
+                    }
+                }
+
+                .pickup-btn {
+                    display: none;
+
+                    &.active {
+                        display: block;
+                    }
+                }
+                
+
                 form {
                     &.mt-87 {
                         margin-top: 87px;
@@ -4414,4 +4431,12 @@ footer {
     background-repeat: no-repeat;
     border-radius: 5px;
     margin-left: 30px;
+}
+
+.comment {
+    display:none;
+
+    &.active {
+        display: block;
+    }
 }

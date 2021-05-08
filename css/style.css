@@ -1612,6 +1612,18 @@ footer .footer-wrapper .footer-right .person button img {
   width: 452px;
   margin-left: 35px;
 }
+.cart-product.cart-product_order .cart-wrapper .cart-sidebar .delivery-btn {
+  display: none;
+}
+.cart-product.cart-product_order .cart-wrapper .cart-sidebar .delivery-btn.active {
+  display: block;
+}
+.cart-product.cart-product_order .cart-wrapper .cart-sidebar .pickup-btn {
+  display: none;
+}
+.cart-product.cart-product_order .cart-wrapper .cart-sidebar .pickup-btn.active {
+  display: block;
+}
 .cart-product.cart-product_order .cart-wrapper .cart-sidebar form.mt-87 {
   margin-top: 87px;
 }
@@ -3601,4 +3613,10 @@ footer .footer-wrapper .footer-right .person button img {
   background-repeat: no-repeat;
   border-radius: 5px;
   margin-left: 30px;
+}
+.comment {
+  display: none;
+}
+.comment.active {
+  display: block;
 }

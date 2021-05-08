@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="fonts/fonts.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="scripts/cart-order.js" defer></script>
-    <script src="scripts/mobile-cart.js" defer></script>
     <title>Big Asia</title>
   </head>
   <body>
@@ -136,8 +135,7 @@
                         <div class="cart-top">
                             <h1 class="title">Оформление заказа</h1>
                             <div class="sub-title">Вы заказали:</div>
-                            <div class="cart-product-items">
-                                
+                            <div class="cart-product-items">                                
                             </div>
                         </div>
 
@@ -162,63 +160,68 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="cart-sidebar">
-                        <form action="">
+                        <form action="#" id="form" class="form__body delivery-btn active">
                             <div class="form-line">
                                 <div class="label">Район доставки</div>
                                 <div class="select">
-                                    <select name="" id="">
-                                        <option value="Первый">Первый</option>
-                                        <option value="Второй">Второй</option>
-                                        <option value="Третий">Третий</option>
+                                    <select name="district" class="select _req">
+                                        <option value="Алатауский" selected>Алатауский</option>
+                                        <option value="Алмалинский">Алмалинский</option>
+                                        <option value="Ауэзовский">Ауэзовский</option>
+                                        <option value="Бостандыкский">Бостандыкский</option>
+                                        <option value="Жетысуский">Жетысуский</option>
+                                        <option value="Медеуский">Медеуский</option>
+                                        <option value="Наурызбайский">Наурызбайский</option>
+                                        <option value="Турксибский">Турксибский</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-line">
-                                <div class="label">ФИО</div>
-                                <input type="text" placeholder="Введите Ваше полное имя" name="">
+                                <label for="formName" class="form__label label">ФИО</label>
+                                <input id="formName" type="text" placeholder="Введите Ваше полное имя" name="name" class="form__input _req">
                             </div>
                             <div class="form-line">
-                                <div class="label">Телефон</div>
-                                <input type="text" name="" placeholder="+77">
+                                <label for="formPhone" class="form__label label">Телефон</label>
+                                <input id="formPhone" type="text" name="phone" placeholder="+77" class="form__input _req">
                             </div>
                             <div class="form-line">
-                                <div class="label">Адрес доставки</div>
-                                <input type="text" name="" placeholder="Введите адрес доставки">
+                                <label for="formPhone" class="label">Адрес доставки</label>
+                                <input id="formAdress" type="text" name="adress" placeholder="Введите адрес доставки" class="form__input _req">
                             </div>
                             <div class="form-line">
                                 <div class="label">Способ оплаты</div>
                                 <div class="select">
-                                    <select name="" id="">
-                                        <option value="Наличные">В ближайшее время</option>
-                                        <option value="Картой">Второй</option>
-                                        <option value="Безналичный">Третий</option>
+                                    <select name="pay" class="select _req">
+                                        <option value="Наличный расчет" selected>Наличный расчет</option>
+                                        <option value="Kaspi перевод">Kaspi перевод</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-line change-label">
-                                <div class="label active">Добавить комментарий.</div>
-                                <input style="display : none;" type="text" name="" placeholder="Введите ваш комментарий...">
+                                <label for="formMessage" class="form__label label active label-btn">Добавить комментарий.</label>
+                                <input id="formMessage" type="text" name="message" placeholder="Введите ваш комментарий..." class="form__input comment">
                             </div>
-                            <button>Оформить заказ</button>
+                            <button class="form-button" type="submit">Оформить заказ</button>
                         </form>
 
-                        <form style="display:none;" class="mt-87" action="">
+                        <form class="mt-87 pickup-btn" action="">
                             <div class="form-line">
                                 <div class="label">ФИО</div>
                                 <input type="text" placeholder="Введите Ваше полное имя" name="">
                             </div>
                             <div class="form-line">
                                 <div class="label">Телефон</div>
-                                <input type="text" name="" placeholder="+77">
+                                <input class="phone" type="text" name="" placeholder="+77">
                             </div>
                             <div class="form-line">
                                 <div class="label">Когда заберете?</div>
                                 <div class="select">
                                     <select name="" id="">
-                                        <option value="Наличные">В ближайшее время</option>
-                                        <option value="Картой">Второй</option>
-                                        <option value="Безналичный">Третий</option>
+                                        <option value="Сегодня">Сегодня</option>
+                                        <option value="Завтра">Завтра</option>
+                                        <option value="В течение недели">В течение недели</option>
                                     </select>
                                 </div>
                             </div>
@@ -280,56 +283,8 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    -->
-    <script>
-
-
-
-
-        jQuery(function() {
-            var j = jQuery; //Just a variable for using jQuery without conflicts
-            j('.change-label .label').on('click', function() {
-                j(this).toggleClass('active');
-                j('.change-label input').toggle();
-            });
-
-            j('.button-line button').on('click', function() {
-                j('.button-line button').removeClass('active');
-                j(this).addClass('active');
-                j('.cart-sidebar form').toggle();
-
-                j('.block-info').toggle();
-            });
-
-
-        });
-
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').trigger('focus')
-        });
-
-        $('.navbar-toggler').on('click', function () {
-            $(this).toggleClass('change-button');
-        });
-
-        $('.cart-mob').on('click', function () {
-            $('.cart-popup').toggleClass('active');
-        });
-
-        $('.close-cart-popup').on('click', function () {
-            $('.cart-popup').toggleClass('active');
-        });
-    </script>
   </body>
 </html>

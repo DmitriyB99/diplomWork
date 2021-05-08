@@ -200,12 +200,6 @@ const createCard = function ({ name, img, description, id, price }) {
     <a href="card.html?id=${id}" class="title links">${name}</a>
     <p class="description">${description}</p>
     <div class="rating">
-        <span class="active"></span>
-        <span class="active"></span>
-        <span class="active"></span>
-        <span class="active"></span>
-        <span></span>                                    
-    </div>
     <div class="price">
         <b>${price} тг/кг</b>
     </div>

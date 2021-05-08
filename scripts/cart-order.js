@@ -1,4 +1,8 @@
-const cartProductItems = document.querySelectorAll('.cart-product-items')[1];
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+	const cartProductItems = document.querySelectorAll('.cart-product-items')[1];
 const priceCartDelivery = document.querySelector('.price-cart-delivery');
 const priceCartPickup = document.querySelector('.price-cart-pickup');
 const totalPrice = document.querySelectorAll('.total-price')[1];
@@ -110,4 +114,115 @@ const cart = {
 	},
 }
 
+
+////////////////////////  mobile cart open
+
+const cartMob = document.querySelector('.cart-mob');
+const cartPopup = document.querySelector('.cart-popup');
+const closePopup = document.querySelector('.close-cart-popup');
+const navbarToggler = document.querySelector('.navbar-toggler');
+const blur = document.querySelector('.blur');
+const homeMobile = document.querySelector('.home-mobile');
+
+cartMob.addEventListener('click', () => {
+	cartMob.classList.toggle('active');
+	cartPopup.classList.toggle('active');
+	document.body.classList.toggle('modal-open');
+	blur.classList.toggle('active');
+	cart.renderCard();
+});
+
+closePopup.addEventListener('click', () => {
+	cartMob.classList.remove('active');
+	cartPopup.classList.remove('active');
+	document.body.classList.remove('modal-open');
+	blur.classList.remove('active');
+});
+
+blur.addEventListener('click', () => {
+	cartMob.classList.remove('active');
+	blur.classList.remove('active');
+	cartPopup.classList.remove('active');
+	document.body.classList.remove('modal-open');
+});
+
+navbarToggler.addEventListener('click', () => navbarToggler.classList.toggle('change-button'));
+
+// form
+
+const buttonLine = document.querySelector('.button-line');
+const formLine1 = document.querySelector('.form-1');
+const formLine2 = document.querySelector('.form-2');
+const pickUpBtn = document.querySelector('.pickup-btn');
+const deliveryBtn = document.querySelector('.delivery-btn');
+const comment = document.querySelector('.comment');
+const labelBtn = document.querySelector('.label-btn');
+
+labelBtn.addEventListener('click', () => {
+	comment.classList.toggle('active');
+});
+
+formLine1.addEventListener('click', () => {
+	formLine1.classList.add('active');
+	formLine2.classList.remove('active');
+	pickUpBtn.classList.remove('active');
+	deliveryBtn.classList.add('active');
+});
+
+formLine2.addEventListener('click', () => {
+	formLine2.classList.add('active');
+	formLine1.classList.remove('active');
+	pickUpBtn.classList.add('active');
+	deliveryBtn.classList.remove('active');
+});
+	
+	const form = document.getElementById('form');
+
+console.log(form);
+
+form.addEventListener('submit', formSend);
+
+async function formSend(e) {
+	e.preventDefault();
+
+
+	let formData = new FormData(form);
+	
+	let response = await fetch('sendmail.php', {
+		method: 'POST',
+		body: formData
+	});
+
+	if (response.ok) {
+		let result = await response.json();
+		alert(result.message);
+		form.reset();
+	} else {
+		alert('ERROR')
+	}
+}
+
 cart.renderCard();
+
+})
+/////////////////////////////////////////////
+
+
+// function formValidate(form) {
+// 	let error = 0;
+// 	let formReq = document.querySelectorAll('._req');
+
+// 	for (let index = 0; index < formReq.length; index++) {
+// 		const input = formReq[index];
+// 	}
+// }
+
+// function formAddError(input) {
+// 	input.parentElement.classList.add('_error');
+// 	input.classList.add('_error')
+// }
+
+// function formRemoveError(input) {
+// 	input.parentElement.classList.remove('_error');
+// 	input.classList.remove('_error')
+// }

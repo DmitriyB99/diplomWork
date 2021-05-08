@@ -157,15 +157,4 @@ cartProductItems.addEventListener('click', event => {
 			cart.plusGood(id);
 		};
     }
-})
-
-cartProductItems.addEventListener('input', event => {
-	const target = event.target;
-    if(target.tagName === "INPUT") {
-        const id = target.closest('.cart-product-item').dataset.id;
-
-        if (target.classList.contains('input')) {
-			cart.inputGood(id);
-		};
-    } 
-})
+});
