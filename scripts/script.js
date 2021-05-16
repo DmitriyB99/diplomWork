@@ -42,7 +42,8 @@ const discount = document.querySelector('.discount');
 const links = document.querySelectorAll('.links');
 const greenLine = document.querySelector('.green-line');
 
-/////////////////////////////////////////////////////////////////////////////////////////////////// Your web app's Firebase configuration
+
+// Your web app's Firebase configuration
 var firebaseConfig = {
 	apiKey: "AIzaSyCt48I_S1-EzUHqVKfSCvn1vPyJodxhmN0",
 	authDomain: "big-asia.firebaseapp.com",
@@ -57,32 +58,30 @@ firebase.initializeApp(firebaseConfig);
 // Get a reference to the database service
 var database = firebase.database();
 // console.log(fetch('https://big-asia-default-rtdb.firebaseio.com', { mode: 'no-cors'}));
-	console.log(database);
-const checkGoods1 = () => {
-	const data22 = [];
 
+const checkGoods = () => {
+	const data = [];
 	return async () => {
 		if (data.length) return data;
 		const firebaseDB = firebase.database().ref('/');
-		firebaseDB.once('value', snapshot => {
+		firebaseDB.on('value', snapshot => {
 			snapshot.forEach(childSnapshot => {			
 				var childKey = childSnapshot.key;
 				var childData = childSnapshot.val();
 				document.getElementById('data').innerHTML = childData['name'] + ',' + childData['id'] + ',' + childData['description'] + ',' + childData['img'] + ',' + childData['price'];
-				data22.push(childData);
+				data.push(childData);
 			})
 		})
-		return data22
-	}
-	
+		return data
+	}	
 }
 
-const getGoods1 = checkGoods1();
+// const getGoods1 = checkGoods1();
 
-console.log(getGoods1());
+// console.log(getGoods1());
 
 
-// const checkGoods1 = () => {
+// const checkGoodsFirebase = () => {
 // 	const data22 = [];
 
 // 		if (data.length) return data;
@@ -96,30 +95,32 @@ console.log(getGoods1());
 // 		return data22	
 // }
 
+// console.log(checkGoodsFirebase());
 
 
-const checkGoods = () => {
 
-	const data = [];
+// const checkGoods = () => {
 
-	return async () => { 
-		if (data.length) return data;
-		const result = await fetch('db/db.json');
+// 	const data = [];
+
+// 	return async () => { 
+// 		if (data.length) return data;
+// 		const result = await fetch('db/db.json');
 		
-		if (!result.ok) {
-			throw 'Ошибка' + result.status
-		} 
-		data.push(...(await result.json()));
-		return data
-	};
-};
+// 		if (!result.ok) {
+// 			throw 'Ошибка' + result.status
+// 		} 
+// 		data.push(...(await result.json()));
+// 		return data
+// 	};
+// };
 
 
 const getGoods = checkGoods();
 
 // const getGoods1 = checkGoods2();
 
-console.log(getGoods());
+// console.log(getGoods());
 // console.log(getGoods1());
 
 // getGoods().then(console.log)
@@ -278,26 +279,6 @@ const createCard = function ({ name, img, description, id, price }) {
 	return card;
 };
 
-// const createCard = function ({ name, img, description, id, price }) {
-// 	const card = document.createElement('div');
-// 	card.className = 'product';
-
-// 	card.innerHTML = `
-//     <div class="img">
-//         <img src="${img}" alt="${name}">
-//     </div>
-//     <a href="card.html?id=${id}" class="title links">${name}</a>
-//     <p class="description">${description}</p>
-//     <div class="rating">
-//     <div class="price">
-//         <b>${price} тг/кг</b>
-//     </div>
-//     <button class="add-to-cart" data-id="${id}">В корзину</button>
-	
-// 	`;
-// 	return card;
-// };
-
 categories.addEventListener('click', (e) => {
     e.preventDefault();
     const currentElem = e.target.closest('.category');
@@ -336,7 +317,7 @@ categoriesNav.forEach(link => {
 		event.preventDefault();
 		const field = link.dataset.field;
 		const value = link.textContent;
-		filterCards(field, value)
+		filterCards(field, value);
 	})
 });
 
@@ -399,6 +380,8 @@ showSpice.forEach(item => {
 const showAllInstantly = () => {
 	getGoods().then(renderCards);
 }
+
+
 
 document.body.addEventListener('click', event => {
 	const addToCart = event.target.closest('.add-to-cart');
@@ -486,12 +469,12 @@ function writeData() {
 	var products = firebase.database().ref('/');
 	var productsAdd = products.push();
 	productsAdd.set({
-		name: '2312',
-		id: '2',
-		img: 'https://ikraketa.ru/images/orehi/izyumsoyagicherniy1.jpg',
-		description: '1',
-		price: '1',
-		category: '1'
+		name: document.getElementById('nameField').value,
+		id: document.getElementById('idField').value,
+		img: document.getElementById('imgField').value,
+		description: document.getElementById('descriptionField').value,
+		price: document.getElementById('priceField').value,
+		category: document.getElementById('categiryField').value
 	})
 
 	getData();
@@ -502,9 +485,7 @@ function getData() {
 	const data22 = []
 
 	firebase.database().ref('/').on('value', snapshot => {
-		snapshot.forEach(function(childSnapshot) {
-
-			
+		snapshot.forEach(function(childSnapshot) {	
 			var childKey = childSnapshot.key;
 			var childData = childSnapshot.val();
 			document.getElementById('data').innerHTML = childData['name'] + ',' + childData['id'] + ',' + childData['description'] + ',' + childData['img'] + ',' + childData['price'];			
