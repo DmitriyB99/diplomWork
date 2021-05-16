@@ -1,8 +1,4 @@
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-	const cartProductItems = document.querySelectorAll('.cart-product-items')[1];
+const cartProductItems = document.querySelectorAll('.cart-product-items')[1];
 const priceCartDelivery = document.querySelector('.price-cart-delivery');
 const priceCartPickup = document.querySelector('.price-cart-pickup');
 const totalPrice = document.querySelectorAll('.total-price')[1];
@@ -10,8 +6,6 @@ const delivery = document.querySelector('.delivery-price');
 const pickUp = document.querySelector('.pickup-price');
 const totalPricePickUp = document.querySelectorAll('.total-price')[2];
 
-
-console.log(totalPricePickUp);
 
 const checkGoods = () => {
 
@@ -54,7 +48,7 @@ const cart = {
 				</div>
 				<div class="cart-product-right d-flex">
 					<div class="cart-product-toggle">
-						<div class="input-range-order" data-desc="Ед. изм.: кг">
+						<div class="input-range-order" data-desc="Ед. изм.: упаковка">
 							<input type="text" maxlength="12" value="${count}" disabled />
 						</div>
 					</div>
@@ -67,6 +61,12 @@ const cart = {
 		const totalPriceBeforeDiscount = this.cartGoods.reduce((sum, item) => {
 			return sum + item.price * item.count;
 		}, 0);
+
+		if (totalPriceBeforeDiscount >= 15000) {
+			delivery.textContent = 0;
+		} else {
+			delivery.textContent = 1000;
+		}
 
         const totalPriceAfterDiscount = this.cartGoods.reduce(() => {
             return totalPriceBeforeDiscount + +delivery.textContent;
@@ -149,14 +149,14 @@ blur.addEventListener('click', () => {
 navbarToggler.addEventListener('click', () => navbarToggler.classList.toggle('change-button'));
 
 // form
-
-const buttonLine = document.querySelector('.button-line');
 const formLine1 = document.querySelector('.form-1');
 const formLine2 = document.querySelector('.form-2');
 const pickUpBtn = document.querySelector('.pickup-btn');
 const deliveryBtn = document.querySelector('.delivery-btn');
 const comment = document.querySelector('.comment');
 const labelBtn = document.querySelector('.label-btn');
+const deliveryDiv = document.querySelector('.delivery');
+const pickupDiv = document.querySelector('.pickup');
 
 labelBtn.addEventListener('click', () => {
 	comment.classList.toggle('active');
@@ -167,6 +167,8 @@ formLine1.addEventListener('click', () => {
 	formLine2.classList.remove('active');
 	pickUpBtn.classList.remove('active');
 	deliveryBtn.classList.add('active');
+	deliveryDiv.classList.add('active');
+	pickupDiv.classList.remove('active');
 });
 
 formLine2.addEventListener('click', () => {
@@ -174,19 +176,113 @@ formLine2.addEventListener('click', () => {
 	formLine1.classList.remove('active');
 	pickUpBtn.classList.add('active');
 	deliveryBtn.classList.remove('active');
+	deliveryDiv.classList.remove('active');
+	pickupDiv.classList.add('active');
 });
-	
-	const form = document.getElementById('form');
 
-console.log(form);
 
-form.addEventListener('submit', formSend);
+/////////////////////select
 
-async function formSend(e) {
+const payMethod = document.querySelector('.pay-method');
+const addScreenshot = document.querySelector('.add-screenshot');
+
+payMethod.addEventListener('change', () => {
+	addScreenshot.classList.toggle('active');
+});
+
+
+const formDelivery = document.querySelector('.form-delivery');
+const formPickup = document.querySelector('.form-pickup');
+
+/////localstorage отправка 
+
+const local = localStorage.getItem('cartBigAsia');
+const title = document.querySelector('.paste');
+
+console.log(local);
+//////////////////////////////////////////////////////////////////
+
+formDelivery.addEventListener('submit', formDeliverySend);
+
+async function formDeliverySend(e) {
 	e.preventDefault();
 
+	let error = formValidate(formDelivery);
 
-	let formData = new FormData(form);
+	let formData = new FormData(formDelivery);
+	formData.append('image', formImage.files[0]);
+	formData.append('products', local);
+
+
+
+	if (error === 0) {
+		let response = await fetch('sendmail.php', {
+			method: 'POST',
+			body: formData
+		});
+	
+		if (response.ok) {
+			let result = await response.json();
+			alert(result.message);
+			formPreview.innerHTML = '';
+			formDelivery.reset();
+		} else {
+			alert('ERROR')
+		}
+	} else {
+		alert('Заполните обязательные поля')
+	}
+
+	function formValidate(formDelivery) {
+		let error = 0;
+		let formReq = document.querySelectorAll('._req');
+	
+		for (let index = 0; index < formReq.length; index++) {
+			const input = formReq[index];
+			formRemoveError(input);
+
+			if (input.classList.contains('_phone')) {
+				if (phoneTest(input)) {
+					formAddError(input);
+					error++;
+				}
+			} else if (input.getAttribute('type') === 'checkbox' && input.checked === false) {
+				formAddError(input);
+				error++;
+			} else {
+				if (input.value === '') {
+					formAddError(input);
+					error++;
+				}
+			}
+		}
+		return error;
+	}
+	
+	function formAddError(input) {
+		input.parentElement.classList.add('_error')
+		input.classList.add('_error')
+	}
+	
+	function formRemoveError(input) {
+		input.parentElement.classList.remove('_error')
+
+		input.classList.remove('_error')
+	}
+
+	/// функция теста телефона
+	function phoneTest (input) {
+		return !/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/.test(input.value);
+	}	
+}
+
+formPickup.addEventListener('submit', formPickupSend);
+
+async function formPickupSend(e) {
+	e.preventDefault();
+
+	let formData = new FormData(formPickup);
+	formData.append('products', local);
 	
 	let response = await fetch('sendmail.php', {
 		method: 'POST',
@@ -196,33 +292,50 @@ async function formSend(e) {
 	if (response.ok) {
 		let result = await response.json();
 		alert(result.message);
-		form.reset();
+		formPickup.reset();
 	} else {
-		alert('ERROR')
+		alert('Произошла ошибка, попробуйте еще раз')
 	}
 }
 
 cart.renderCard();
 
-})
+
 /////////////////////////////////////////////
+/// получить инпут файл в переменную 
 
+const formImage = document.getElementById('formImage');
 
-// function formValidate(form) {
-// 	let error = 0;
-// 	let formReq = document.querySelectorAll('._req');
+/// получить див для превью в переменную
 
-// 	for (let index = 0; index < formReq.length; index++) {
-// 		const input = formReq[index];
-// 	}
-// }
+const formPreview = document.querySelector('#formPreview');
 
-// function formAddError(input) {
-// 	input.parentElement.classList.add('_error');
-// 	input.classList.add('_error')
-// }
+formImage.addEventListener('change', () => {
+	uploadFile(formImage.files[0]);
+});
 
-// function formRemoveError(input) {
-// 	input.parentElement.classList.remove('_error');
-// 	input.classList.remove('_error')
-// }
+function uploadFile(file) {
+	/// проверить тип файлa
+	if (!['image/jpeg', 'image/png', 'image/gif'].includes(file.type)) {
+		alert('Разрешены только изображения');
+		formImage.value = '';
+		return
+	}
+
+/// проверить размер файлы
+
+	if (file.size > 2 * 1024 * 1024) {
+		alert('Файл должен быть менее 2 МБ');
+		return;
+	}
+
+	var reader = new FileReader();
+	reader.onload = function (e) {
+		formPreview.innerHTML = `<img src="${e.target.result}" alt="скриншот">`;
+	};
+	reader.onerror = function (e) {
+		alert('Ошибка');
+	};
+	reader.readAsDataURL(file);
+}
+

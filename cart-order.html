@@ -144,14 +144,14 @@
                                 <button class="active form-1">Доставка</button>
                                 <button class="form-2">Самовывоз</button>
                             </div>
-                            <div class="block-info delivery">
+                            <div class="block-info delivery active">
                                 <div class="left-info">
                                     <div class="line"><span>Итого</span><b class="price-cart-delivery">3500 тг</b></div>
                                     <div class="line"><span>Доставка</span><span><b class="green delivery-price">1000</b><b class="green"> тг</b></span></div>
                                 </div>
                                 <div class="right-info"><span>Итого к оплате</span><b class="total-price">3500 тг</b></div>
                             </div>
-                            <div class="block-info pickup" style="display:none;">
+                            <div class="block-info pickup">
                                 <div class="left-info">
                                     <div class="line"><span>Итого</span><b class="price-cart-pickup">3500 тг</b></div>
                                     <div class="line"><span>Самовывоз</span><span><b class="green pickup-price">0</b><b class="green"> тг</b></span></div>
@@ -162,11 +162,11 @@
                     </div>
 
                     <div class="cart-sidebar">
-                        <form action="#" id="form" class="form__body delivery-btn active">
+                        <form action="#" class="form-delivery form__body delivery-btn active">
                             <div class="form-line">
                                 <div class="label">Район доставки</div>
                                 <div class="select">
-                                    <select name="district" class="select _req">
+                                    <select name="district" class="select">
                                         <option value="Алатауский" selected>Алатауский</option>
                                         <option value="Алмалинский">Алмалинский</option>
                                         <option value="Ауэзовский">Ауэзовский</option>
@@ -179,12 +179,12 @@
                                 </div>
                             </div>
                             <div class="form-line">
-                                <label for="formName" class="form__label label">ФИО</label>
-                                <input id="formName" type="text" placeholder="Введите Ваше полное имя" name="name" class="form__input _req">
+                                <label for="formNameDelivery" class="form__label label">ФИО</label>
+                                <input id="formNameDelivery" type="text" placeholder="Введите Ваше полное имя" name="name" class="form__input _req">
                             </div>
                             <div class="form-line">
-                                <label for="formPhone" class="form__label label">Телефон</label>
-                                <input id="formPhone" type="text" name="phone" placeholder="+77" class="form__input _req">
+                                <label for="formPhoneDelivery" class="form__label label">Телефон</label>
+                                <input id="formPhoneDelivery" type="text" name="phone" placeholder="+77" class="form__input _req _phone">
                             </div>
                             <div class="form-line">
                                 <label for="formPhone" class="label">Адрес доставки</label>
@@ -193,39 +193,61 @@
                             <div class="form-line">
                                 <div class="label">Способ оплаты</div>
                                 <div class="select">
-                                    <select name="pay" class="select _req">
+                                    <select name="pay" class="select _req pay-method">
                                         <option value="Наличный расчет" selected>Наличный расчет</option>
                                         <option value="Kaspi перевод">Kaspi перевод</option>
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="form-line add-screenshot">
+                                <div class="label">Прикрепите скриншот оплаты</div>
+                                <div class="file">
+                                    <div class="file__item">
+                                        <input id="formImage" accept=".jpg, .png, .gif" type="file" name="image" class="file__input"> 
+                                        <div class="file__button">Выбрать</div>
+                                    </div>
+                                    <div id="formPreview" class="file__preview"></div>
+                                </div>                                
+                            </div>
+
                             <div class="form-line change-label">
                                 <label for="formMessage" class="form__label label active label-btn">Добавить комментарий.</label>
                                 <input id="formMessage" type="text" name="message" placeholder="Введите ваш комментарий..." class="form__input comment">
                             </div>
+
+                            <div class="form-line">
+                                <div class="checkbox">
+                                    <input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox__input _req">
+                                    <label for="formAgreement" class="checkbox__label"><p> Я даю свое согласие на обработку персональных данных в соответствии с <a href="terms.html" target="_blank">условиями</a></p></label>
+                                </div>
+                            </div>
+                            
                             <button class="form-button" type="submit">Оформить заказ</button>
                         </form>
 
-                        <form class="mt-87 pickup-btn" action="">
+                        <form action="#" class="form-pickup pickup-btn">
                             <div class="form-line">
-                                <div class="label">ФИО</div>
-                                <input type="text" placeholder="Введите Ваше полное имя" name="">
+                                <label for="formNamePickup" class="form__label label">ФИО</label>
+                                <input id="formNamePickup" type="text" placeholder="Введите Ваше полное имя" name="name" class="form__input">
                             </div>
                             <div class="form-line">
-                                <div class="label">Телефон</div>
-                                <input class="phone" type="text" name="" placeholder="+77">
+                                <label for="formPhonePickup" class="form__label label">Телефон</label>
+                                <input id="formPhonePickup" type="text" name="phone" placeholder="+77" class="form__input">
                             </div>
                             <div class="form-line">
                                 <div class="label">Когда заберете?</div>
                                 <div class="select">
-                                    <select name="" id="">
-                                        <option value="Сегодня">Сегодня</option>
+                                    <select name="when-pick" class="select">
+                                        <option value="Сегодня" selected>Сегодня</option>
                                         <option value="Завтра">Завтра</option>
                                         <option value="В течение недели">В течение недели</option>
                                     </select>
                                 </div>
                             </div>
-                            <button>Оформить заказ</button>
+                            <button class="form-button" type="submit">Оформить заказ</button>
+
+                            <div class="paste"></div>
                         </form>
                     </div>
                 </div>

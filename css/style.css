@@ -1850,14 +1850,17 @@ footer .footer-wrapper .footer-right .person button img {
   color: #ffffff;
 }
 .cart-product.cart-product_order .cart-wrapper .cart-info .cart-sum .block-info {
+  display: none;
   width: 465.68px;
   height: 126.34px;
   background: #FFFFFF;
   box-shadow: 0px 0px 28.763px rgba(0, 0, 0, 0.06);
   border-radius: 9.58767px;
   padding: 34px 30px;
-  display: flex;
   justify-content: space-between;
+}
+.cart-product.cart-product_order .cart-wrapper .cart-info .cart-sum .block-info.active {
+  display: flex;
 }
 .cart-product.cart-product_order .cart-wrapper .cart-info .cart-sum .block-info .left-info {
   width: 50%;
@@ -3618,5 +3621,96 @@ footer .footer-wrapper .footer-right .person button img {
   display: none;
 }
 .comment.active {
+  display: block;
+}
+.file__item {
+  position: relative;
+}
+.file__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%!important;
+  height: 100%!important;
+  opacity: 0;
+  font-size: 0!important;
+  cursor: pointer;
+}
+.file__button {
+  width: 153.58px;
+  height: 38.21px;
+  background: #00AC4E;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 15.6716px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.file__preview {
+  display: inline-block;
+  max-width: 100px;
+  padding-top: 10px;
+}
+.file__preview img {
+  max-width: 100%;
+}
+.checkbox__input {
+  display: none;
+}
+.checkbox__input:checked + .checkbox__label::after {
+  transform: scale(1);
+}
+.checkbox__label {
+  font-size: 16px;
+  line-height: 140%;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  margin: 25px 0;
+}
+.checkbox__label::after {
+  transition: transform 0.5s ease 0s;
+  content: "";
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background-color: #00AC4E;
+  border-radius: 4px;
+  transform: scale(0);
+}
+.checkbox__label::before {
+  content: "";
+  align-self: flex-start;
+  flex: 0 0 24px;
+  height: 24px;
+  border-radius: 4px;
+  margin-right: 10px;
+  border: 1px solid #757575;
+}
+.checkbox__label a {
+  color: #00AC4E;
+}
+label.form__label.label.active.label-btn {
+  margin-bottom: 0!important;
+}
+.checkbox._error .checkbox__label::before {
+  box-shadow: 0px 0px 6px #ac00008a;
+}
+.form-line._error .form__input {
+  box-shadow: 0px 0px 6px #ac00008a;
+}
+.add-screenshot {
+  display: none;
+}
+.add-screenshot.active {
   display: block;
 }
