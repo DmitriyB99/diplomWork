@@ -46,6 +46,14 @@
         $body.='<p><strong>Когда заберет:</strong> '.$_POST['when-pick'].' </p>';
     }
 
+    if(trim(!empty($_POST['price']))) {
+        $body.='<p><strong>Общая сумма заказа:</strong> '.$_POST['price'].' </p>';
+    }
+
+    if(trim(!empty($_POST['support']))) {
+        $body.='<p><strong>Сообщение в поддержку:</strong> '.$_POST['price'].' </p>';
+    }
+
     $decoded_json = json_decode($_POST['products'], true);
     
 

@@ -1201,6 +1201,31 @@ footer {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            height: 300px;
+
+            button.add-to-cart {
+                margin-top: 0px;
+                width: 215px;
+                height: 42.47px;
+                background: #00AC4E;
+                border-radius: 5px;
+                line-height: 42.47px;
+                display: inline-block;
+                text-align: center;
+                font-weight: 500;
+                font-size: 18px;
+                color: #FFFFFF;
+                border: none;
+
+                &:hover {
+                    text-decoration: none;
+                    background: #037b39;
+                }
+
+                &:active {
+                    transform: scale(0.9);
+                }
+            }  
 
             .title {
                 font-weight: 500;
@@ -1375,7 +1400,7 @@ footer {
 
             .nav-tabs {
                 display: flex;
-                justify-content: space-between;
+                justify-content: space-around;
                 border-bottom: 0px solid #dee2e6;
                 padding-right: 35px;
                 margin-bottom: 40px;
@@ -2632,7 +2657,7 @@ footer {
 }
 
 @media(min-width: 992px) and (max-width:1199px) {
-    .card-product .card-top .card-sidebar .pay-block .pay-popup {
+    .card-product .card-top .card-sidebar .pay-block .add-to-cart {
         width: 160px;
     }
     
@@ -2721,7 +2746,7 @@ footer {
         width: 35%;
     }
 
-    .card-product .card-top .card-sidebar .pay-block .pay-popup {
+    .card-product .card-top .card-sidebar .pay-block .add-to-cart {
         width: 135px;
     }
     
@@ -3431,6 +3456,7 @@ footer {
                 flex-direction: row;
                 flex-wrap: wrap;
                 padding: 20px;
+                height: 140px;
 
                 .title {
                     font-size: 12px;
@@ -3448,7 +3474,7 @@ footer {
                 }
 
                 .pay-block {
-                    .pay-popup {
+                    .add-to-cart {
                         width: 108px;
                         height: 22px;
                         font-size: 10px;
@@ -4321,10 +4347,10 @@ footer {
         position: fixed;
         bottom: 24px;
         left: 50%;
-        width: 310px;
+        width: 100px;
         height: 47px;
         background: #00AC4E;
-        justify-content: space-between;
+        justify-content: center;
         transform: translateX(-50%);
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
         border-radius: 52px;
@@ -4336,11 +4362,10 @@ footer {
             position: relative;
         }
 
-        .home-mobile {
+        .home-mobile, .support-mobile {
             svg path {
                 fill: #FFFFFF;
             }
-
 
             &.active {
                 width: 38px;
@@ -4553,3 +4578,73 @@ label.form__label.label.active.label-btn {
         display: block;
     }
 }
+
+.preloader {
+    /*фиксированное позиционирование*/
+    position: fixed;
+    /* координаты положения */
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* фоновый цвет элемента */
+    background: #FFFFFF;
+    /* размещаем блок над всеми элементами на странице (это значение должно быть больше, чем у любого другого позиционированного элемента на странице) */
+    z-index: 1001;
+  }
+
+  .preloader__row {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    margin-top: -35px;
+    margin-left: -35px;
+    text-align: center;
+    animation: preloader-rotate 2s infinite linear;
+  }
+
+  .preloader__item {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    background-color: #00AC4E;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    animation: preloader-bounce 2s infinite ease-in-out;
+  }
+
+  .preloader__item:last-child {
+    top: auto;
+    bottom: 0;
+    animation-delay: -1s;
+  }
+
+  @keyframes preloader-rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes preloader-bounce {
+
+    0%,
+    100% {
+      transform: scale(0);
+    }
+
+    50% {
+      transform: scale(1);
+    }
+  }
+
+  .loaded_hiding .preloader {
+    transition: 0.3s opacity;
+    opacity: 0;
+  }
+
+  .loaded .preloader {
+    display: none;
+  }

@@ -1,14 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="fonts/fonts.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="scripts/cart.js" defer></script>
     <title>Big Asia</title>
   </head>
@@ -48,14 +47,6 @@
                                 <span>+7 (708) 559-25-13</span>
                             </a>
                         </div>
-                        <div class="menu-user">
-                            <button class="profile" data-bs-toggle="modal" data-bs-target="#login">
-                                <img src="img/person.svg" alt="">
-                            </button>
-                            <a href="cart.html" class="cart">
-                                <img src="img/shopping-cart.svg" alt="">
-                            </a>
-                        </div>
                     </div>
                 </div>
             </nav>
@@ -91,7 +82,7 @@
                     </div>
                     <div class="cart-sidebar-right">
                         <form action="">
-                            <div class="form-line-order-number">Заказ №47593</div>
+                            <div class="form-line-order-number">Заказ</div>
                             <div class="form-line">
                                 <span >Товаров в корзине</span><b class="price-cart">3500 тг </b>
                             </div>
@@ -134,7 +125,7 @@
                             </div>
                             <div class="work-email">
                                 <a href="mailto:dmitry9989@gmail.com">Email: dmitry9989@gmail.com</a>
-                                <a href="support.html" class="site-help">Поддержка</a>
+                                <a href="support.html" class="site-help" target="_blank">Поддержка</a>
                             </div>
                         </div>
                     </div>
@@ -144,16 +135,11 @@
                             <a href="https://www.instagram.com/b_rezhnev_dsm/" target="_blank">Мы в Instagram ></a>
                         </div>
                     </div>
-                    <div class="footer-right">
-                        <div class="person">
-                            <button data-bs-toggle="modal" data-bs-target="#register"><img src="img/person-wh.svg" alt=""><span>Войти / Регистрация</span></button>
-                        </div>
-                    </div>
                 </div>
                 <div class="footer_bottom">
                     <span>©2021. Big Asia</span>
-                    <a href="terms.html">Условия и соглашения</a>
-                    <a href="policy.html">Политика конфиденциальности</a>
+                    <a href="terms.html" target="_blank">Условия и соглашения</a>
+                    <a href="policy.html" target="_blank">Политика конфиденциальности</a>
                 </div>
             </div>
         </footer>
@@ -164,35 +150,7 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    -->
-
-    <script>
-        $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-        });
-
-        $('.navbar-toggler').on('click', function () {
-            $(this).toggleClass('change-button');
-        });
-
-        $('.cart-mob').on('click', function () {
-            $('.cart-popup').toggleClass('active');
-        });
-
-        $('.close-cart-popup').on('click', function () {
-            $('.cart-popup').toggleClass('active');
-        });
-    </script>
   </body>
 </html>

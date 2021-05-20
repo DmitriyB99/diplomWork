@@ -6,23 +6,10 @@ const delivery = document.querySelector('.delivery-price');
 const pickUp = document.querySelector('.pickup-price');
 const totalPricePickUp = document.querySelectorAll('.total-price')[2];
 
+const navbarToggler = document.querySelector('.navbar-toggler');
 
-const checkGoods = () => {
 
-	const data = [];
 
-	return async () => { 
-		if (data.length) return data;
-		const result = await fetch('db/db.json');
-		if (!result.ok) {
-			throw 'Ошибка' + result.status
-		} 
-		data.push(...(await result.json()));
-		return data
-	};
-};
-
-const getGoods = checkGoods();
 
 const cart = {
     cartGoods: JSON.parse(localStorage.getItem('cartBigAsia')) || [],
@@ -115,37 +102,6 @@ const cart = {
 }
 
 
-////////////////////////  mobile cart open
-
-const cartMob = document.querySelector('.cart-mob');
-const cartPopup = document.querySelector('.cart-popup');
-const closePopup = document.querySelector('.close-cart-popup');
-const navbarToggler = document.querySelector('.navbar-toggler');
-const blur = document.querySelector('.blur');
-const homeMobile = document.querySelector('.home-mobile');
-
-cartMob.addEventListener('click', () => {
-	cartMob.classList.toggle('active');
-	cartPopup.classList.toggle('active');
-	document.body.classList.toggle('modal-open');
-	blur.classList.toggle('active');
-	cart.renderCard();
-});
-
-closePopup.addEventListener('click', () => {
-	cartMob.classList.remove('active');
-	cartPopup.classList.remove('active');
-	document.body.classList.remove('modal-open');
-	blur.classList.remove('active');
-});
-
-blur.addEventListener('click', () => {
-	cartMob.classList.remove('active');
-	blur.classList.remove('active');
-	cartPopup.classList.remove('active');
-	document.body.classList.remove('modal-open');
-});
-
 navbarToggler.addEventListener('click', () => navbarToggler.classList.toggle('change-button'));
 
 // form
@@ -199,8 +155,13 @@ const formPickup = document.querySelector('.form-pickup');
 const local = localStorage.getItem('cartBigAsia');
 const title = document.querySelector('.paste');
 
-console.log(local);
+
 //////////////////////////////////////////////////////////////////
+setTimeout(() => {    
+    const price = document.querySelector('#formPrice');
+	price.value = totalPrice.textContent
+}, 0);
+
 
 formDelivery.addEventListener('submit', formDeliverySend);
 

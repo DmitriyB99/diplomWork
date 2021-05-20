@@ -57,7 +57,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // Get a reference to the database service
 var database = firebase.database();
-// console.log(fetch('https://big-asia-default-rtdb.firebaseio.com', { mode: 'no-cors'}));
 
 const checkGoods = () => {
 	const data = [];
@@ -66,70 +65,16 @@ const checkGoods = () => {
 		const firebaseDB = firebase.database().ref('/');
 		firebaseDB.on('value', snapshot => {
 			snapshot.forEach(childSnapshot => {			
-				var childKey = childSnapshot.key;
 				var childData = childSnapshot.val();
-				document.getElementById('data').innerHTML = childData['name'] + ',' + childData['id'] + ',' + childData['description'] + ',' + childData['img'] + ',' + childData['price'];
+				// document.getElementById('data').innerHTML = childData['name'] + ',' + childData['id'] + ',' + childData['description'] + ',' + childData['img'] + ',' + childData['price'];
 				data.push(childData);
 			})
-		})
+		})		
 		return data
 	}	
-}
-
-// const getGoods1 = checkGoods1();
-
-// console.log(getGoods1());
-
-
-// const checkGoodsFirebase = () => {
-// 	const data22 = [];
-
-// 		if (data.length) return data;
-// 		firebase.database().ref('/').once('value', snapshot => {
-// 			snapshot.forEach(childSnapshot => {			
-// 				var childKey = childSnapshot.key;
-// 				var childData = childSnapshot.val();
-// 				data22.push(childData);
-// 			})
-// 		})		
-// 		return data22	
-// }
-
-// console.log(checkGoodsFirebase());
-
-
-
-// const checkGoods = () => {
-
-// 	const data = [];
-
-// 	return async () => { 
-// 		if (data.length) return data;
-// 		const result = await fetch('db/db.json');
-		
-// 		if (!result.ok) {
-// 			throw 'Ошибка' + result.status
-// 		} 
-// 		data.push(...(await result.json()));
-// 		return data
-// 	};
-// };
-
+};
 
 const getGoods = checkGoods();
-
-// const getGoods1 = checkGoods2();
-
-// console.log(getGoods());
-// console.log(getGoods1());
-
-// getGoods().then(console.log)
-// getGoods1().then(console.log)
-
-
-
-
-
 
 const cart = {
 	cartGoods: JSON.parse(localStorage.getItem('cartBigAsia')) || [],
@@ -268,10 +213,10 @@ const createCard = function ({ name, img, description, id, price }) {
         <img src="${img}" alt="${name}">
     </div>
     <a href="card.html?id=${id}" class="title links">${name}</a>
-    <p class="description">${description}</p>
+    <p class="description">${description}/ 250 гр</p>
     <div class="rating">
     <div class="price">
-        <b>${price} тг/кг</b>
+        <b>${price} тг/уп</b>
     </div>
     <button class="add-to-cart" data-id="${id}">В корзину</button>
 	
@@ -305,6 +250,17 @@ const showAll = event => {
 viewAll.forEach(elem => {
 	elem.addEventListener('click', showAll)
 });
+
+////////////////////////////////////// instaView
+const viewAllSolo = document.querySelectorAll('.view-all')[1];
+
+viewAllSolo.addEventListener('click', showAll);
+
+setTimeout(() => {    
+    viewAllSolo.click();
+}, 0);
+////////////////////////////////////////////////////////////////////
+
 
 const filterCards = function (field, value) {
 	getGoods()
@@ -379,8 +335,13 @@ showSpice.forEach(item => {
 
 const showAllInstantly = () => {
 	getGoods().then(renderCards);
+	console.log('success');
 }
 
+setTimeout(() => {    
+    showAllInstantly();
+	document.body.classList.add('loaded');
+}, 2500);
 
 
 document.body.addEventListener('click', event => {
@@ -461,46 +422,42 @@ navbarToggler.addEventListener('click', () => navbarToggler.classList.toggle('ch
 
 cart.renderCard();
 cart.countQuantity();
-showAllInstantly();
 
 
 
-function writeData() {
-	var products = firebase.database().ref('/');
-	var productsAdd = products.push();
-	productsAdd.set({
-		name: document.getElementById('nameField').value,
-		id: document.getElementById('idField').value,
-		img: document.getElementById('imgField').value,
-		description: document.getElementById('descriptionField').value,
-		price: document.getElementById('priceField').value,
-		category: document.getElementById('categiryField').value
-	})
+// function writeData() {
+// 	var products = firebase.database().ref('/');
+// 	var productsAdd = products.push();
+// 	productsAdd.set({
+// 		name: document.getElementById('nameField').value,
+// 		id: document.getElementById('idField').value,
+// 		img: document.getElementById('imgField').value,
+// 		description: document.getElementById('descriptionField').value,
+// 		price: document.getElementById('priceField').value,
+// 		category: document.getElementById('categiryField').value
+// 	})
 
-	getData();
+// 	getData();
 
-}
+// }
 
-function getData() {
-	const data22 = []
+// function getData() {
+// 	const data22 = []
 
-	firebase.database().ref('/').on('value', snapshot => {
-		snapshot.forEach(function(childSnapshot) {	
-			var childKey = childSnapshot.key;
-			var childData = childSnapshot.val();
-			document.getElementById('data').innerHTML = childData['name'] + ',' + childData['id'] + ',' + childData['description'] + ',' + childData['img'] + ',' + childData['price'];			
+// 	firebase.database().ref('/').on('value', snapshot => {
+// 		snapshot.forEach(function(childSnapshot) {	
+// 			var childKey = childSnapshot.key;
+// 			var childData = childSnapshot.val();
+// 			document.getElementById('data').innerHTML = childData['name'] + ',' + childData['id'] + ',' + childData['description'] + ',' + childData['img'] + ',' + childData['price'];			
 
-			data22.push(childData);			
-			// data22.push(JSON.stringify(childData));
+// 			data22.push(childData);			
+// 			// data22.push(JSON.stringify(childData));
 
-		})
-		console.log(data22);
-		
-		
-
-	})
+// 		})
+// 		console.log(data22);
+// 	})
 	
-}			
+// }			
 
 // getData();
 
@@ -508,5 +465,13 @@ function getData() {
 
 
 
+window.onload = function () {
+	document.body.classList.add('loaded_hiding');
+	window.setTimeout(function () {
+	document.body.classList.remove('loaded_hiding');
+	}, 10);
+};
+
+	
 
 
