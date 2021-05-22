@@ -161,6 +161,43 @@ setTimeout(() => {
     const price = document.querySelector('#formPrice');
 	price.value = totalPrice.textContent
 }, 0);
+/////////////////////////////////////////////
+/// получить инпут файл в переменную 
+
+const formImage = document.getElementById('formImage');
+/// получить див для превью в переменную
+
+const formPreview = document.querySelector('#formPreview');
+
+formImage.addEventListener('change', () => {
+	uploadFile(formImage.files[0]);
+});
+console.log(formImage.files);
+
+function uploadFile(file) {
+	/// проверить тип файлa
+	if (!['image/jpeg', 'image/png', 'image/gif'].includes(file.type)) {
+		alert('Разрешены только изображения');
+		formImage.value = '';
+		return
+	}
+
+/// проверить размер файлы
+
+	if (file.size > 2 * 1024 * 1024) {
+		alert('Файл должен быть менее 2 МБ');
+		return;
+	}
+
+	var reader = new FileReader();
+	reader.onload = function (e) {
+		formPreview.innerHTML = `<img src="${e.target.result}" alt="скриншот">`;
+	};
+	reader.onerror = function (e) {
+		alert('Ошибка');
+	};
+	reader.readAsDataURL(file);
+}
 
 
 formDelivery.addEventListener('submit', formDeliverySend);
@@ -171,10 +208,8 @@ async function formDeliverySend(e) {
 	let error = formValidate(formDelivery);
 
 	let formData = new FormData(formDelivery);
-	formData.append('image', formImage.files[0]);
 	formData.append('products', local);
-
-
+	formData.append('image', formImage.files[0]);
 
 	if (error === 0) {
 		let response = await fetch('sendmail.php', {
@@ -262,41 +297,4 @@ async function formPickupSend(e) {
 cart.renderCard();
 
 
-/////////////////////////////////////////////
-/// получить инпут файл в переменную 
-
-const formImage = document.getElementById('formImage');
-
-/// получить див для превью в переменную
-
-const formPreview = document.querySelector('#formPreview');
-
-formImage.addEventListener('change', () => {
-	uploadFile(formImage.files[0]);
-});
-
-function uploadFile(file) {
-	/// проверить тип файлa
-	if (!['image/jpeg', 'image/png', 'image/gif'].includes(file.type)) {
-		alert('Разрешены только изображения');
-		formImage.value = '';
-		return
-	}
-
-/// проверить размер файлы
-
-	if (file.size > 2 * 1024 * 1024) {
-		alert('Файл должен быть менее 2 МБ');
-		return;
-	}
-
-	var reader = new FileReader();
-	reader.onload = function (e) {
-		formPreview.innerHTML = `<img src="${e.target.result}" alt="скриншот">`;
-	};
-	reader.onerror = function (e) {
-		alert('Ошибка');
-	};
-	reader.readAsDataURL(file);
-}
 

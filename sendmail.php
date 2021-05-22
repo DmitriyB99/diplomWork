@@ -46,12 +46,8 @@
         $body.='<p><strong>Когда заберет:</strong> '.$_POST['when-pick'].' </p>';
     }
 
-    if(trim(!empty($_POST['price']))) {
-        $body.='<p><strong>Общая сумма заказа:</strong> '.$_POST['price'].' </p>';
-    }
-
     if(trim(!empty($_POST['support']))) {
-        $body.='<p><strong>Сообщение в поддержку:</strong> '.$_POST['price'].' </p>';
+        $body.='<p><strong>Сообщение в поддержку:</strong> '.$_POST['support'].' </p>';
     }
 
     $decoded_json = json_decode($_POST['products'], true);
@@ -60,17 +56,23 @@
     $body.= '<h2>Товары:</h2>' ;
     
     foreach($decoded_json as $item) {
-        $body.='<p><strong>Айди: </strong>'.$item['id'].'<strong>; Наименование: </strong>' .$item['name']. '<strong>; Количество: </strong>'.$item['count'].'</p>';
+        $body.='<p><strong>Айди: </strong>'.$item['id'].'<strong>; Наименование: </strong>' .$item['name']. '<strong>; Количество: </strong>'.$item['count'].' шт.</p>';
     }    
+
+    if(trim(!empty($_POST['price']))) {
+        $body.='<p><strong>Общая сумма заказа:</strong> '.$_POST['price'].' </p>';
+    }
 
         if(!empty($_FILES['image']['tmp_name'])) {
             $filePath = __DIR__ . "/files/" . $_FILES['image']['name'];
             if (copy($_FILES['image']['tmp_name'], $filePath)) {
                 $fileAttach = $filePath;
-                $body.='<p><strong>Фото в приложении</strong>';
+                $body.='<p><strong>Скрин оплаты в приложении:</strong>';
                 $mail->addAttachment($fileAttach);
             }
         }
+
+        
 
 
 		$mail->Body = $body;
